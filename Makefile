@@ -17,6 +17,9 @@ shell:
 install:
 	poetry install
 
+# Add a rule to activate environment and install dependencies
+prepare: shell install
+
 # Add a rule to clean up any temporary files.
 clean:
 	find . -name "*.pyc" -exec rm -f {} \;
@@ -28,7 +31,7 @@ migrate:
 	$(DJANGO_MANAGE) migrate
 
 # Add a rule to add Django super user
-createsuperuser:
+sudo:
 	$(DJANGO_MANAGE) createsuperuser
 
 # Add a rule to docker up container
