@@ -1,6 +1,6 @@
 # ![tarzan_title](https://github.com/trouchet/tarzan/blob/133557f070ecd8c2bdc3ab0eadf0de4639000e54/static/images/tarzan_tiny)
 
-A Django app.
+A Django app with routes and logging.
 
 # How to operate
 
