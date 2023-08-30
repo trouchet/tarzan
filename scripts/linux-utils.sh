@@ -23,7 +23,7 @@ exists() {
 #   >> exists echo # 0 (success)
 listPortPIDs () {
   portPIDs="$(lsof -i ":$1" | awk '{ print $2 }' | awk 'NR>1')"
-  echo "$portPIDs"  | uniq -u
+  echo "$portPIDs" | uniq -u
 }
 
 # Compares two CalVer (YY.MM) version strings.
