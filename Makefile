@@ -45,3 +45,7 @@ down:
 # Add a rule to run the development server.
 run:
 	$(DJANGO_MANAGE) runserver
+
+# Add a rule to deploy the server.
+deploy: prepare migrate up run 
+	
