@@ -15,8 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView
+
+from .swagger import schema_view
+
+swagger_with_ui=schema_view.with_ui('swagger', cache_timeout=0)
+swagger_without_ui=schema_view.without_ui(cache_timeout=0)
+favicon_redirect=RedirectView.as_view(url='/static/images/favicon.ico')
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('api/', include('src.urls')),
+    path('swagger/', swagger_with_ui, name='schema-swagger-ui'),
+    path('favicon.ico', favicon_redirect),
 ]
+
