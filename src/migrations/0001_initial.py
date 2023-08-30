@@ -2,6 +2,7 @@
 
 from django.db.migrations import Migration, CreateModel
 from django.db.models import BigAutoField, CharField, TextField, DateTimeField
+from django.db.migrations import RunPython
 
 # Post model
 post_fields=[
@@ -27,6 +28,18 @@ post_operation=CreateModel(
             fields=post_model_args["fields"],
         )
 
+def insert_data(apps, schema_editor):
+    Post = apps.get_model('src', 'Post')
+    
+    # Insert some sample data
+    Post.objects.create(title="Sample Post 1", content="Content for Sample Post 1", pub_date="2023-08-27 13:01:00")
+    Post.objects.create(title="Sample Post 2", content="Content for Sample Post 2", pub_date="2023-08-27 13:02:00")
+    Post.objects.create(title="Sample Post 3", content="Content for Sample Post 3", pub_date="2023-08-27 13:03:00")
+
+def reverse_insert_data(apps, schema_editor):
+    # If you need to reverse the data insertion, you can add DELETE or other SQL statements here
+    pass
+
 # Available migrations
 class Migration(Migration):
 
@@ -34,4 +47,7 @@ class Migration(Migration):
 
     dependencies = []
 
-    operations = [ post_operation, ]
+    operations = [ 
+        post_operation, 
+        RunPython(insert_data, reverse_code=reverse_insert_data),
+    ]
