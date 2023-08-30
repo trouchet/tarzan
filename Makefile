@@ -19,20 +19,30 @@ install:
 
 # Add a rule to activate environment and install dependencies
 prepare: shell install
+	. .scripts/docker-utils.sh
+	. .scripts/linux-utils.sh
 
-# Add a rule to clean up any temporary files.
+# Add a rule to clean up any temporary files
 clean:
 	find . -name "*.pyc" -exec rm -f {} \;
 	find . -name "__pycache__" -exec rmdir {} \;
 	rm -rf venv
 
-# Add a rule to run initial migrations and create a superuser.
+# Add a rule to run initial migrations and create a superuser
 migrate:
 	$(DJANGO_MANAGE) migrate
 
 # Add a rule to add Django super user
 sudo:
 	$(DJANGO_MANAGE) createsuperuser
+
+# Add a rule to list containers
+ps:
+	docker ps -a
+
+# Add a rule to run initial migrations and create a superuser
+build:
+	docker build -t tarzan-image .
 
 # Add a rule to docker up container
 up:
@@ -44,8 +54,8 @@ down:
 
 # Add a rule to run the development server.
 run:
-	$(DJANGO_MANAGE) runserver
+	$(DOCKER_COMPOSE) exec web $(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
 # Add a rule to deploy the server.
-deploy: prepare migrate up run 
+deploy: build prepare migrate up run 
 	
