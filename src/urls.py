@@ -16,6 +16,5 @@ auth_redirect=include('rest_framework.urls', namespace='rest_framework')
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('', include(router.urls)),
-    path('api-auth/', auth_redirect),
+    path('', include(router.urls))
 ]
