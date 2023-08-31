@@ -6,7 +6,7 @@ A Django app with routes and logging.
 
 Run the commands below on `tarzan` root path:
 
-## Prepare
+### Prepare
   
   - What: prepare environment for `poetry` usage:
   
@@ -14,7 +14,7 @@ Run the commands below on `tarzan` root path:
   make prepare
   ```
 
-## Clean
+### Clean
 
   - What: clean unnecessary asset files:
 
@@ -22,7 +22,15 @@ Run the commands below on `tarzan` root path:
   make clean
   ```
 
-## Create admin user
+### Run migrations
+
+  - What: Run migrations:
+
+  ```
+  make migrate
+  ```
+
+### Create admin user
 
   - What: create superuser:
 
@@ -30,7 +38,7 @@ Run the commands below on `tarzan` root path:
   make sudo
   ```
 
-## Docker compose up
+### Docker compose up
 
   - What: build container image and host locally:
   
@@ -38,7 +46,15 @@ Run the commands below on `tarzan` root path:
   make up
   ```
 
-## Docker compose down
+### List containers 
+
+  - What: list containers, among them, `tarzan-box` and `tarzan-memory`:
+  
+  ```
+  make ps
+  ```
+
+### Docker compose down
 
   - What: bring container image down
 
@@ -46,7 +62,7 @@ Run the commands below on `tarzan` root path:
   make down
   ```
 
-## Run
+### Run
 
   - What: run the application:
 
@@ -54,3 +70,10 @@ Run the commands below on `tarzan` root path:
   make start
   ```
 
+### Deploy
+
+  - What: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
+
+  ```
+  make start
+  ```

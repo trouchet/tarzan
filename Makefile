@@ -18,7 +18,7 @@ install:
 	poetry install
 
 # Add a rule to activate environment and install dependencies
-prepare: shell install
+prepare: clean shell install
 	. .scripts/docker-utils.sh
 	. .scripts/linux-utils.sh
 
@@ -57,5 +57,5 @@ run:
 	$(DOCKER_COMPOSE) exec web $(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
 # Add a rule to deploy the server.
-deploy: build prepare migrate up run 
+deploy: prepare build up migrate sudo run 
 	
