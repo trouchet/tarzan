@@ -42,7 +42,7 @@ ps:
 
 # Add a rule to run initial migrations and create a superuser
 build:
-	docker build -t tarzan-image .
+	$(DOCKER_COMPOSE) build
 
 # Add a rule to docker up container
 up:
