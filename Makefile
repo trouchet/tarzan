@@ -19,13 +19,10 @@ install:
 
 # Add a rule to activate environment and install dependencies
 prepare: clean shell install
-	. .scripts/docker-utils.sh
-	. .scripts/linux-utils.sh
 
 # Add a rule to clean up any temporary files
 clean:
 	find . -name "*.pyc" -exec rm -f {} \;
-	find . -name "__pycache__" -exec rmdir {} \;
 	rm -rf venv
 
 # Add a rule to run initial migrations and create a superuser
@@ -54,8 +51,8 @@ down:
 
 # Add a rule to run the development server.
 run:
-	$(DOCKER_COMPOSE) exec web $(DJANGO_MANAGE) runserver 0.0.0.0:8000
+	$(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
 # Add a rule to deploy the server.
-deploy: prepare build up migrate sudo run 
+deploy: prepare build up migrate sudo run
 	
