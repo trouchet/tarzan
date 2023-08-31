@@ -59,6 +59,7 @@ SWAGGER_SETTINGS = {
 }
 
 MIDDLEWARE = [
+    'src.middleware.RedirectMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
