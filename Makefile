@@ -29,6 +29,14 @@ clean:
 migrate:
 	$(DJANGO_MANAGE) migrate
 
+# Add a rule to collect static files for production environment
+collect:
+	$(DJANGO_MANAGE) collectstatic
+
+# Add a rule to collect static files for production environment
+django-shell:
+	$(DJANGO_MANAGE) shell
+
 # Add a rule to add Django super user
 sudo:
 	$(DJANGO_MANAGE) createsuperuser
@@ -54,5 +62,4 @@ run:
 	$(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
 # Add a rule to deploy the server.
-deploy: prepare build up migrate sudo run
-	
+deploy: prepare build up migrate collect sudo run
