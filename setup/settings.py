@@ -13,9 +13,30 @@ from decouple import config
 from pathlib import Path
 import os
 
+# Replace with the desired redirect URL
+LOGIN_REDIRECT_URL = '/api/profile/'
+
+# Use the database model user for authentication 
+AUTH_USER_MODEL = 'auth.user'
+
+# Use the database for session storage (recommended for production)
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
+# Use the default session serializer (JSON serializer is common)
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+# Set the session cookie name (optional but recommended for security)
+SESSION_COOKIE_NAME = 'my_session_cookie'
+
+# Set session timeout (in seconds)
+SESSION_COOKIE_AGE = 3600  # 1 hour, adjust as needed
+
+# Set whether the session cookie is secure (HTTPS only, recommended for production)
+SESSION_COOKIE_SECURE = True
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -44,6 +65,7 @@ INSTALLED_APPS = [
 
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 SWAGGER_SETTINGS = {
@@ -59,7 +81,6 @@ SWAGGER_SETTINGS = {
 }
 
 MIDDLEWARE = [
-    'src.middleware.RedirectMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

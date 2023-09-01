@@ -1,11 +1,7 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home Page</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
-</head>
-<body>
-    <h1>Hello, world. You're at the polls index.</h1>
-</body>
-</html>
+{% extends 'src/base.html' %}
+
+{% block content %}
+<h1>Welcome to our Website</h1>
+<p>This is the home page content.</p>
+<!-- Insert any additional content specific to the home page -->
+{% endblock %}

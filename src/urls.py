@@ -1,6 +1,5 @@
 from django.urls import path, include
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.views.generic.base import RedirectView
 
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
@@ -16,5 +15,11 @@ auth_redirect=include('rest_framework.urls', namespace='rest_framework')
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('signup/', views.signup, name='signup'),
+    path('profile/', views.profile, name='profile'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
 ]
+
+

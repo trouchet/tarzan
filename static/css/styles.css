@@ -1,0 +1,46 @@
+body {
+    background-color: #f0f4f8; /* Cool background color */
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #3e6b89; /* Calming header background color */
+    color: #ffffff; /* White text on header */
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff; /* White text for navigation links */
+    text-decoration: none;
+}
+
+.login-signup {
+    float: right; /* Float login/sign-up to the right side of the header */
+}
+
+/* Style your login and sign-up forms as needed */
+.login-form,
+.signup-form {
+    /* Add your form styling here */
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #3e6b89; /* Calming footer background color */
+    color: #ffffff; /* White text on footer */
+    padding: 10px;
+    text-align: center;
+}
