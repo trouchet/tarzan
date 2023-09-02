@@ -1,15 +1,6 @@
 version: '3'
 
 services:
-  # Your Django application
-  web:
-    image: tarzan-image:latest
-    container_name: tarzan-box
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-  
   db:
     image: postgres:13
     container_name: tarzan-memory

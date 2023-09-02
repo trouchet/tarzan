@@ -22,6 +22,10 @@ sanitize() {
   done
 }
 
+logs () {
+  docker ps -a --format "table {{.ID}}\t{{.Names}}" | grep "$1" | awk '{print $1}' | xargs docker logs
+}
+
 # List containers with certain text snippet on containername
 #
 # examples:
@@ -43,3 +47,4 @@ purge() {
 export -f sanitize
 export -f list
 export -f purge
+export -f logs

@@ -3,63 +3,50 @@
 # Define common variables
 DJANGO_MANAGE = python manage.py
 DOCKER_COMPOSE = docker-compose
+DOCKER = docker
 PYTHON := python
 PIP := pip
 
 # Additional rules can be added as needed.
-.PHONY: venv install setup run clean test migrate migrate_periodic
+.PHONY: prepare sudo migrate run up down ps purge 
 
-# Add a rule to activate environment
-shell:
+env: ## Add a rule to activate environment
 	poetry shell
 
-# Add a rule to install project dependencies.
-install:
+install: ## Add a rule to install project dependencies.
 	poetry install
 
-# Add a rule to activate environment and install dependencies
-prepare: clean shell install
+prepare: clean env install # Add a rule to activate environment and install dependencies
 
-# Add a rule to clean up any temporary files
-clean:
+clean: ## Add a rule to clean up any temporary files
 	find . -name "*.pyc" -exec rm -f {} \;
 	rm -rf venv
 
-# Add a rule to run initial migrations and create a superuser
-migrate:
+migrate: ## Add a rule to run initial migrations and create a superuser
 	$(DJANGO_MANAGE) migrate
 
-# Add a rule to collect static files for production environment
-collect:
+collect: ## Add a rule to collect static files for production environment
 	$(DJANGO_MANAGE) collectstatic
 
-# Add a rule to collect static files for production environment
-django-shell:
+shell: ## Add a rule to collect static files for production environment
 	$(DJANGO_MANAGE) shell
 
-# Add a rule to add Django super user
-sudo:
-	$(DJANGO_MANAGE) createsuperuser
-
-# Add a rule to list containers
-ps:
+ps: ## Add a rule to list containers
 	docker ps -a
 
-# Add a rule to run initial migrations and create a superuser
-build:
+build: ## Add a rule to run initial migrations and create a superuser
 	$(DOCKER_COMPOSE) build
 
-# Add a rule to docker up container
-up:
+up: ## Add a rule to docker up container
 	$(DOCKER_COMPOSE) up -d
 
-# Add a rule to docker down container
-down:
+down: ## Add a rule to docker down container
 	$(DOCKER_COMPOSE) down
 
-# Add a rule to run the development server.
-run:
+run: ## Add a rule to run the development server.
 	$(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
-# Add a rule to deploy the server.
-deploy: prepare build up migrate collect sudo run
+deploy: build up migrate collect run ## Add a rule to deploy the server.
+
+sudo: ## Add a rule to add Django super user
+	$(DJANGO_MANAGE) createsuperuser
