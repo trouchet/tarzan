@@ -20,10 +20,10 @@ from django.views.generic import RedirectView
 
 from .swagger import schema_view
 
-swagger_with_ui=schema_view.with_ui('swagger', cache_timeout=0)
-swagger_without_ui=schema_view.without_ui(cache_timeout=0)
-favicon_redirect=RedirectView.as_view(url='/static/images/favicon.ico')
-wild_redirect=RedirectView.as_view(url='/api/', permanent=False)
+swagger_with_ui = schema_view.with_ui('swagger', cache_timeout=0)
+swagger_without_ui = schema_view.without_ui(cache_timeout=0)
+favicon_redirect = RedirectView.as_view(url='/static/images/favicon.ico')
+wild_redirect = RedirectView.as_view(url='/api/', permanent=False)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +32,3 @@ urlpatterns = [
     path('favicon.ico', favicon_redirect),
     re_path(r'^.*$', wild_redirect),
 ]
-

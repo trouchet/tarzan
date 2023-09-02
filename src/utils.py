@@ -7,6 +7,7 @@ import re
 
 logger = logging.getLogger(__name__)
 
+
 def validate_username(username):
     # Define a regular expression pattern for allowed characters
     # Letters, digits, and the special characters @, ., +, -, and _
@@ -18,19 +19,23 @@ def validate_username(username):
             "Username must be 150 characters or fewer. Letters, digits, and @/./+/-/_ only."
         )
 
+
 def validate_password_similarity(password, user_info):
     # Check if the password is too similar to other personal information
     password_validation.validate_password(password, user_info)
 
+
 def validate_password_length(password):
     if len(password) < 8:
-        raise ValidationError("Your password must contain at least 8 characters.")
+        raise ValidationError(
+            "Your password must contain at least 8 characters.")
+
 
 def validate_common_password(password):
     validator = CommonPasswordValidator()
     validator.validate(password)
 
+
 def validate_password_numeric(password):
     if password.isnumeric():
         raise ValidationError("Your password can't be entirely numeric.")
-

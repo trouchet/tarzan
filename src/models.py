@@ -3,6 +3,7 @@ from django.db.models import CharField, \
     TextField, \
     DateTimeField
 
+
 class Post(Model):
     title = CharField(max_length=200)
     content = TextField()

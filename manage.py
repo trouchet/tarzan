@@ -4,6 +4,7 @@ import os
 from sys import argv
 import django
 
+
 def main():
     """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "setup.settings")

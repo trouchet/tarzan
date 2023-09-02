@@ -16,7 +16,7 @@ import os
 # Replace with the desired redirect URL
 LOGIN_URL = '/api/profile/'
 
-# Use the database model user for authentication 
+# Use the database model user for authentication
 AUTH_USER_MODEL = 'auth.user'
 
 # Use the database for session storage (recommended for production)
@@ -31,7 +31,8 @@ SESSION_COOKIE_NAME = 'my_session_cookie'
 # Set session timeout (in seconds)
 SESSION_COOKIE_AGE = 3600  # 1 hour, adjust as needed
 
-# Set whether the session cookie is secure (HTTPS only, recommended for production)
+# Set whether the session cookie is secure (HTTPS only, recommended for
+# production)
 SESSION_COOKIE_SECURE = True
 
 

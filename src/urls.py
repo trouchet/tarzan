@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.contrib.auth.views  import PasswordResetView, \
+from django.contrib.auth.views import PasswordResetView, \
     PasswordResetDoneView, \
     PasswordResetConfirmView, \
     PasswordResetCompleteView
@@ -15,7 +15,7 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'posts', views.PostViewSet)
 
-auth_redirect=include('rest_framework.urls', namespace='rest_framework')
+auth_redirect = include('rest_framework.urls', namespace='rest_framework')
 
 urlpatterns = [
     path('', views.index, name="index"),
@@ -25,5 +25,3 @@ urlpatterns = [
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', views.CustomLogoutView.as_view(), name='logout'),
 ]
-
-
