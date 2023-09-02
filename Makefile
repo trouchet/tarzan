@@ -54,6 +54,9 @@ clean: # Add a rule to clean up any temporary files
 	find . -name "*.pyc" -exec rm -f {} \;
 	rm -rf venv
 
+lint: ## Add a rule to clean up any temporary files
+	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
+
 migrate: # Add a rule to run initial migrations and create a superuser
 	$(DJANGO_MANAGE) migrate
 
