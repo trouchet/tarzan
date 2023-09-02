@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 
 # Replace with the desired redirect URL
-LOGIN_REDIRECT_URL = '/api/profile/'
+LOGIN_URL = '/api/profile/'
 
 # Use the database model user for authentication 
 AUTH_USER_MODEL = 'auth.user'
@@ -45,9 +45,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-*yfb&*wtp(t00s-31-_p&dgq*)$0h=%16gwi$d-45wpab4lt!6"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 

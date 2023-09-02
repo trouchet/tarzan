@@ -1,7 +1,10 @@
 {% extends 'src/base.html' %}
 
 {% block content %}
-<h1>Welcome to our Website</h1>
+{% if user.is_authenticated %}
+    <h1>Welcome, {{ user.first_name }} {{ user.last_name }}!</h1>
+{% else %}
+    <h1>Welcome to our Website!</h1>
+{% endif %}
 <p>This is the home page content.</p>
-<!-- Insert any additional content specific to the home page -->
 {% endblock %}

@@ -28,10 +28,137 @@ nav ul li a {
     float: right; /* Float login/sign-up to the right side of the header */
 }
 
-/* Style your login and sign-up forms as needed */
+/* Common button styling */
+/* Common button styling */
+.button {
+    background-color: #007bff; /* Green background color */
+    color: #fff;              /* White text color */
+    padding: 10px 20px;       /* Padding for buttons (adjust as needed) */
+    border: none;             /* Remove default button border */
+    border-radius: 3px;       /* Add rounded corners to the button */
+    cursor: pointer;          /* Add pointer cursor on hover */
+    margin-left: 20px;        /* Add left margin to separate buttons */
+}
+
+/* Style the button when hovered over */
+.button:hover {
+    background-color: #0056b3; /* Darker green background color on hover */
+}
+
+/* Style for login and logout container */
+.login-logout-container {
+    float: right; /* Float the container to the right side of the header */
+    margin-right: 20px; /* Add right margin to separate from other header content */
+}
+
+/* Define a base class with common form-group styles */
+.base-form {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.base-form label {
+    display: block; /* Change to block to allow full width */
+    width: 100%; /* Make the label span the full width */
+    text-align: left; /* Align the label text to the left */
+    margin-bottom: 5px; /* Add some space between the label and input */
+}
+
+.base-form input[type="text"],
+.base-form input[type="email"],
+.base-form textarea {
+    width: 100%; /* Make the input field span the full width */
+}
+
+/* Apply common styles to both login and signup forms */
 .login-form,
 .signup-form {
-    /* Add your form styling here */
+    /* Inherit from the base class */
+    @extend .base-form;
+}
+
+/* Additional styles specific to the signup form */
+.signup-form {
+    /* Add your specific signup form styles here */
+    /* For example, you can adjust margin or padding to align it properly */
+    margin-left: 10px; /* Adjust the left margin as needed */
+}
+
+/* Style for the form container */
+.form-container {
+    max-width: 400px;           /* Adjust the maximum width as needed */
+    margin: 0 auto;             /* Center the form horizontally */
+    padding: 20px;              /* Add some padding for spacing */
+    background-color: #fff;     /* Background color for the form container */
+    border: 1px solid #ccc;     /* Add a border for the form container */
+    border-radius: 5px;         /* Add rounded corners */
+    text-align: center;         /* Center text and form elements */
+}
+
+/* Style for the login form within the login-form-container */
+.login-form-container .login-form {
+    text-align: left;           /* Align the form content to the left */
+}
+
+/* Style for the form group within the login-form-container */
+.login-form-container .form-group {
+    margin-bottom: 20px;       /* Adjust the margin as needed */
+}
+
+/* Style for the login form labels within the login-form-container */
+.login-form-container .form-group label {
+    display: block;            /* Make labels take full width */
+    font-weight: bold;         /* Make labels bold, adjust as needed */
+    margin-bottom: 5px;       /* Add spacing between labels and inputs */
+}
+
+/* Style for the login form inputs within the login-form-container */
+.login-form-container .form-group input[type="text"],
+.login-form-container .form-group input[type="password"] {
+    width: 100%;               /* Make text and password inputs span the full width */
+    padding: 10px;             /* Add padding for spacing */
+    border: 1px solid #ccc;    /* Add a border to inputs */
+    border-radius: 3px;        /* Add rounded corners to inputs */
+}
+
+/* Style for the login form button within the login-form-container */
+.login-form-container button[type="submit"] {
+    background-color: #007bff; /* Button background color */
+    color: #fff;               /* Button text color */
+    padding: 10px 20px;        /* Button padding */
+    border: none;              /* Remove button border */
+    border-radius: 3px;        /* Add rounded corners to the button */
+    cursor: pointer;           /* Add pointer cursor on hover */
+}
+
+/* Style for form group */
+.form-group {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+/* Style for labels */
+.form-group label {
+    display: block; /* Make labels take full width */
+    font-weight: bold; /* Make labels bold, adjust as needed */
+    margin-bottom: 5px; /* Add spacing between labels and inputs */
+}
+
+/* Style for inputs */
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%; /* Make text and password inputs span the full width */
+}
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%; /* Make inputs take full width */
+    padding: 10px; /* Add padding for spacing */
+    border: 1px solid #ccc; /* Add a border to inputs */
+    border-radius: 3px; /* Add rounded corners to inputs */
+}
+
+/* Style for required field indicator (asterisk) */
+.required-field {
+    color: red; /* Adjust the color as needed */
+    margin-left: 5px; /* Add spacing between label and asterisk */
 }
 
 main {

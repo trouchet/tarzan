@@ -56,6 +56,6 @@ def signup(request):
 
 @login_required
 def profile(request):
-    # Fetch and displa  y user information
+    # Fetch and display user information
     user = request.user
     return render(request, 'src/profile.html', {'user': user})
