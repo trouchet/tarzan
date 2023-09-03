@@ -9,71 +9,46 @@ Run the commands below on `tarzan` root path:
 ### Prepare
 
 - What: prepare environment for `poetry` usage:
+- How: `make prepare`
 
-```
-make prepare
-```
+**Remark**: Make sure to always have the environment activated with command above. It runs the target `env`, which generates the project's environment. Commands below require activated environment.
 
 ### Clean
 
 - What: clean unnecessary asset files:
-
-```
-make clean
-```
+- How: `make clean`
 
 ### Run migrations
 
 - What: Run migrations:
-
-```
-make migrate
-```
+- How: `make migrate`
 
 ### Create admin user
 
 - What: create superuser:
-
-```
-make sudo
-```
+- How: `make sudo`
 
 ### Docker compose up
 
 - What: build container image and host locally:
-
-```
-make up
-```
+- How: `make up`
 
 ### List containers 
 
 - What: list containers, among them, `tarzan-box` and `tarzan-memory`:
-
-```
-make ps
-```
+- How: `make ps`
 
 ### Docker compose down
 
 - What: bring container image down
-
-```
-make down
-```
+- How: `make down`
 
 ### Run
 
 - What: run the application:
-
-```
-make start
-```
+- How: `make start`
 
 ### Deploy
 
 - What: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
-
-```
-make start
-```
+- How: `make start` 
