@@ -7,73 +7,73 @@ A Django app with routes and logging.
 Run the commands below on `tarzan` root path:
 
 ### Prepare
-  
-  - What: prepare environment for `poetry` usage:
-  
-  ```
-  make prepare
-  ```
+
+- What: prepare environment for `poetry` usage:
+
+```
+make prepare
+```
 
 ### Clean
 
-  - What: clean unnecessary asset files:
+- What: clean unnecessary asset files:
 
-  ```
-  make clean
-  ```
+```
+make clean
+```
 
 ### Run migrations
 
-  - What: Run migrations:
+- What: Run migrations:
 
-  ```
-  make migrate
-  ```
+```
+make migrate
+```
 
 ### Create admin user
 
-  - What: create superuser:
+- What: create superuser:
 
-  ```
-  make sudo
-  ```
+```
+make sudo
+```
 
 ### Docker compose up
 
-  - What: build container image and host locally:
-  
-  ```
-  make up
-  ```
+- What: build container image and host locally:
+
+```
+make up
+```
 
 ### List containers 
 
-  - What: list containers, among them, `tarzan-box` and `tarzan-memory`:
-  
-  ```
-  make ps
-  ```
+- What: list containers, among them, `tarzan-box` and `tarzan-memory`:
+
+```
+make ps
+```
 
 ### Docker compose down
 
-  - What: bring container image down
+- What: bring container image down
 
-  ```
-  make down
-  ```
+```
+make down
+```
 
 ### Run
 
-  - What: run the application:
+- What: run the application:
 
-  ```
-  make start
-  ```
+```
+make start
+```
 
 ### Deploy
 
-  - What: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
+- What: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
 
-  ```
-  make start
-  ```
+```
+make start
+```

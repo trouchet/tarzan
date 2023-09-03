@@ -1,7 +1,5 @@
 from django.db.models import Model
-from django.db.models import CharField, \
-    TextField, \
-    DateTimeField
+from django.db.models import CharField, TextField, DateTimeField
 
 
 class Post(Model):

@@ -1,9 +1,5 @@
 from django.urls import path, include
 from django.contrib.staticfiles.storage import staticfiles_storage
-from django.contrib.auth.views import PasswordResetView, \
-    PasswordResetDoneView, \
-    PasswordResetConfirmView, \
-    PasswordResetCompleteView
 
 from rest_framework import routers
 from rest_framework_swagger.views import get_swagger_view
