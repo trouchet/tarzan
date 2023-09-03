@@ -6,6 +6,7 @@ DOCKER_COMPOSE = docker-compose
 DOCKER = docker
 PYTHON := python
 PIP := pip
+BROWSER := firefox
 
 define BROWSER_PYSCRIPT
 import os, webbrowser, sys
@@ -82,6 +83,14 @@ run: ## Add a rule to run the development server.
 	$(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
 deploy: build up migrate collect run ## Add a rule to deploy the server.
+
+test: ## Add a rule to test the application
+	coverage run -m pytest
+
+report: ## Add a rule to generate coverage report
+	coverage report
+	coverage html
+	$(BROWSER) htmlcov/index.html
 
 sudo: ## Add a rule to add Django super user
 	$(DJANGO_MANAGE) createsuperuser
