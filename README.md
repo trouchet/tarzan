@@ -8,47 +8,47 @@ Run the commands below on `tarzan` root path:
 
 ### Prepare
 
-- What: prepare environment for `poetry` usage:
-- How: `make prepare`
+- **What**: prepare environment for `poetry` usage:
+- **How**: `make prepare`
 
 **Remark**: Make sure to always have the environment activated with command above. It runs the target `env`, which generates the project's environment. Commands below require activated environment.
 
 ### Clean
 
-- What: clean unnecessary asset files:
-- How: `make clean`
+- **What**: clean unnecessary asset files:
+- **How**: `make clean`
 
 ### Run migrations
 
-- What: Run migrations:
-- How: `make migrate`
+- **What**: Run migrations:
+- **How**: `make migrate`
 
 ### Create admin user
 
-- What: create superuser:
-- How: `make sudo`
+- **What**: create superuser:
+- **How**: `make sudo`
 
 ### Docker compose up
 
-- What: build container image and host locally:
-- How: `make up`
+- **What**: build container image and host locally:
+- **How**: `make up`
 
 ### List containers 
 
-- What: list containers, among them, `tarzan-box` and `tarzan-memory`:
-- How: `make ps`
+- **What**: list containers, among them, `tarzan-box` and `tarzan-memory`:
+- **How**: `make ps`
 
 ### Docker compose down
 
-- What: bring container image down
-- How: `make down`
+- **What**: bring container image down
+- **How**: `make down`
 
 ### Run
 
-- What: run the application:
-- How: `make start`
+- **What**: run the application:
+- **How**: `make start`
 
 ### Deploy
 
-- What: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
-- How: `make start` 
+- **What**: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
+- **How**: `make start` 
