@@ -50,5 +50,5 @@ Run the commands below on `tarzan` root path:
 
 ### Deploy
 
-- **What**: perform actions `prepare`, `build`, `up`, `migrate`, `sudo` and `run`:
+- **What**: perform actions `build`, `up`, `migrate`, `sudo` and `run`:
 - **How**: `make start` 
