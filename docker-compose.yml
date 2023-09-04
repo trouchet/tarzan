@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
 
-  tarzan-box:
+  web:
     build:
       context: .
       dockerfile: Dockerfile

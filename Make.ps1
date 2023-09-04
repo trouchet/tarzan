@@ -47,7 +47,12 @@ function Clean {
     Get-ChildItem -Path . -Filter *.pyc -File | ForEach-Object {
         Remove-Item -Path $_.FullName -Force -ErrorAction SilentlyContinue
     }
+    
     Remove-Item -Path "venv" -Recurse -Force -ErrorAction SilentlyContinue
+    Remove-Item -Path "htmlcov" -Recurse -Force -ErrorAction SilentlyContinue
+    
+    # Clean Docker volumes
+    docker system prune --volumes -f
 }
 
 # Function to run initial migrations and create a superuser
