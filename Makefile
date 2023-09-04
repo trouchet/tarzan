@@ -54,6 +54,7 @@ install: ## Add a rule to install project dependencies.
 clean: # Add a rule to clean up any temporary files
 	find . -name "*.pyc" -exec rm -f {} \;
 	rm -rf venv
+	rm -rf htmlcov
 
 lint: ## Add a rule to clean up any temporary files
 	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;

@@ -105,6 +105,16 @@ if ($args.Count -eq 0) {
     exit
 }
 
+# Test target
+test:
+    coverage run -m pytest
+
+# Report target
+report: test
+    coverage report
+    coverage html
+    $(BROWSER) htmlcov/index.html
+
 # Execute the specified target
 $target = $args[0]
 

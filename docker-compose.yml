@@ -8,3 +8,15 @@ services:
       - .env
     ports:
       - "5432:5432"
+
+  tarzan-box:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tarzan-box
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
