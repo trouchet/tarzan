@@ -21,7 +21,7 @@ COPY scripts/django-utils.sh /app/
 
 # Install project dependencies using Poetry within a virtual environment
 RUN poetry config virtualenvs.create false && \
-    poetry install --no-dev
+    poetry install --only main --no-interaction --no-ansi
 
 # Expose the port on which your Django app will run (e.g., 8000)
 EXPOSE 8000
