@@ -1,0 +1,55 @@
+[MASTER]
+
+# Specify the maximum number of allowed nested blocks for functions/methods.
+max-nested-blocks = 5
+
+[MESSAGES CONTROL]
+
+# Enable or disable specific pylint messages.
+disable = C0114, C0115, C0116
+
+[BASIC]
+
+# Specify the output format. "colorized" is a good choice for terminals.
+output-format = colorized
+
+[FORMAT]
+
+# Set the maximum line length. The recommended value is 88 characters.
+max-line-length = 100
+
+[TYPECHECK]
+
+# Enable type hint checking. Requires Python 3.5+.
+# Python 2 users can skip this section.
+# Note: You need to install the 'mypy' package for type hint checking.
+check-untyped-defs = true
+warn-return-any = true
+warn-unused-ignores = true
+
+[IMPORTS]
+
+# Enable checking of import order and grouping. Django projects often have
+# specific import conventions.
+import-order-style = google
+
+[DESIGN]
+
+# Enable checking for good naming conventions.
+good-names = i, j, k, ex, Run, _
+
+[SIMILARITIES]
+
+# Enable checking for code duplication.
+min-similarity-lines = 10
+
+[LOGGING]
+
+# Enable checking of logging format string.
+logging-format-interpolation = f-string
+
+[DOCS]
+
+# Enable checking of docstring conventions.
+# Customize this according to your project's docstring style.
+convention = numpy
