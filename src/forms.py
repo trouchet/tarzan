@@ -1,5 +1,4 @@
 # forms.py
-from django.contrib.auth.forms import UserCreationForm
 
 from django.forms import CharField, \
     EmailField, \

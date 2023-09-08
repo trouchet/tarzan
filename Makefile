@@ -64,6 +64,8 @@ clean: # Add a rule to clean up any temporary files
 	$(DOCKER) system prune --volumes -f
 
 lint: ## Add a rule to clean up any temporary files
+	ruff --fix .
+	pre-commit run --all-files
 	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
 
 test: ## Add a rule to test the application

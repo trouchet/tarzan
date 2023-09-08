@@ -1,8 +1,6 @@
 from django.urls import path, include
-from django.contrib.staticfiles.storage import staticfiles_storage
 
 from rest_framework import routers
-from rest_framework_swagger.views import get_swagger_view
 
 from . import views
 
