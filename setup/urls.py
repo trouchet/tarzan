@@ -18,10 +18,10 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 from django.views.generic import RedirectView
 
-from .swagger import schema_view
+from .swagger import SchemaView
 
-swagger_with_ui = schema_view.with_ui('swagger', cache_timeout=0)
-swagger_without_ui = schema_view.without_ui(cache_timeout=0)
+swagger_with_ui = SchemaView.with_ui('swagger', cache_timeout=0)
+swagger_without_ui = SchemaView.without_ui(cache_timeout=0)
 favicon_redirect = RedirectView.as_view(url='/static/images/favicon.ico')
 wild_redirect = RedirectView.as_view(url='/api/', permanent=False)
 
