@@ -24,7 +24,7 @@ jobs:
         # Install Poetry if not already installed
         curl -sSL https://install.python-poetry.org | python -
         # Configure Poetry to use the correct Python version
-        python -m poetry env use ${{ matrix.python-version }}
+        poetry env use ${{ matrix.python-version }}
       
     - name: Set up Poetry and pylint
       run: |
