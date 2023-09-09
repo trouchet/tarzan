@@ -20,10 +20,6 @@ jobs:
       run: |
         pip install poetry
 
-    - name: Activate virtual environment
-      run: |
-        poetry shell
-
     - name: Install project dependencies
       run: |
         poetry install
