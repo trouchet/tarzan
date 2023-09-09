@@ -18,6 +18,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    
+    - name: Set DJANGO_SETTINGS_MODULE
+      run: export DJANGO_SETTINGS_MODULE=src.settings
 
     - name: Set up Poetry and pylint
       run: |
