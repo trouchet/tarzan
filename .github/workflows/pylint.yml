@@ -18,12 +18,12 @@ jobs:
         
     - name: Install package poetry
       run: |
-        pip install poetry pylint
-
+        pip install poetry pylint-django
+    
     - name: Install project dependencies
       run: |
         poetry install
-
+    
     - name: Analyze the code with pylint
       run: |
         pylint $(git ls-files '*.py')
