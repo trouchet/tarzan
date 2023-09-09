@@ -46,7 +46,7 @@ Run the commands below on `tarzan` root path:
 ### Run
 
 - **What**: run the application:
-- **How**: `make start`
+- **How**: `make deploy`
 
 ### Deploy
 
