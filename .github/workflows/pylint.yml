@@ -25,7 +25,10 @@ jobs:
         curl -sSL https://install.python-poetry.org | python -
         # Configure Poetry to use the correct Python version
         python -m poetry env use ${{ matrix.python-version }}
-        pip install poetry pylint-django
+      
+    - name: Set up Poetry and pylint
+      run: |
+        pip install pylint-django
         
     - name: Install project dependencies
       run: |
