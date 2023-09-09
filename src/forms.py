@@ -221,7 +221,23 @@ class CustomUserCreationForm(UserCreationForm):
             "Your password can’t be entirely numeric.")
 
     def clean_username(self):
+        """
+        Validate and clean a username.
+
+        This method is used as part of form validation to ensure that the provided
+        username is unique and does not already exist in the User database.
+
+        Returns:
+            str: The cleaned and validated username if it is unique.
+
+        Raises:
+            ValidationError: If the provided username is not unique, a
+            ValidationError is raised with a message indicating that the username
+            is already in use.
+
+        """
         username = self.cleaned_data['username']
+        
         # Check if the username is already taken
         if User.objects.filter(username=username).exists():
             raise ValidationError(

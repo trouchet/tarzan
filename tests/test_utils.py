@@ -27,8 +27,9 @@ Usage:
     in 'src.utils' are implemented and functioning as intended.
 """
 
-import pytest
 from django.core.exceptions import ValidationError
+import pytest
+
 from src.utils import (
     validate_username,
     validate_password_similarity,
