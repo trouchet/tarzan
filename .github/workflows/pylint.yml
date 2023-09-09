@@ -30,6 +30,7 @@ jobs:
         # Activate the Poetry environment
         source $HOME/.poetry/env
         # Configure Poetry to use the correct Python version
+        poetry config virtualenvs.create true
         poetry env use ${{ matrix.python-version }}
         # Install project dependencies
         poetry install
