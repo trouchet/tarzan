@@ -15,8 +15,8 @@ $BROWSER_PYSCRIPT = @"
 $PRINT_HELP_PYSCRIPT = @"
     \$regex_pattern = '^([a-zA-Z_-]+):.*?## (.*)$$'
 
-    Get-Content $PSCommandPath | ForEach-Object {
-        if ($_ -match \$regex_pattern) {
+    Get-Content \$PSCommandPath | ForEach-Object {
+        if (\$_ -match \$regex_pattern) {
             \$target = \$matches[1]
             \$help = \$matches[2]
             Write-Host ("%-20s %s" -f \$target, \$help)
@@ -32,27 +32,38 @@ function Show-Help {
 
 # Function to activate environment
 function Activate-Env {
-    poetry shell
+    # Replace with your activation command, e.g., 'poetry shell'
+    # Example:
+    Invoke-Expression "poetry shell"
 }
 
 # Function to prepare environment
 function Prepare-Env {
+    # Remove 'venv' directory if it exists
     Remove-Item -Path "venv" -Recurse -Force -ErrorAction SilentlyContinue
+
+    # Activate the environment (replace with your activation command)
     Activate-Env
-    poetry install
+
+    # Install project dependencies using 'poetry'
+    Invoke-Expression "poetry install"
 }
 
 # Function to clean up temporary files
 function Clean {
+    # Remove '.pyc' files
     Get-ChildItem -Path . -Filter *.pyc -File | ForEach-Object {
-        Remove-Item -Path $_.FullName -Force -ErrorAction SilentlyContinue
+        Remove-Item -Path \$_.FullName -Force -ErrorAction SilentlyContinue
     }
-    
+
+    # Remove 'venv' directory
     Remove-Item -Path "venv" -Recurse -Force -ErrorAction SilentlyContinue
+
+    # Remove 'htmlcov' directory
     Remove-Item -Path "htmlcov" -Recurse -Force -ErrorAction SilentlyContinue
-    
-    # Clean Docker volumes
-    docker system prune --volumes -f
+
+    # Clean Docker volumes (optional)
+    Invoke-Expression "$DOCKER system prune --volumes -f"
 }
 
 # Function to run initial migrations and create a superuser
@@ -76,12 +87,12 @@ function Build-Containers {
 }
 
 # Function to start Docker containers
-function Up-Containers {
+function Start-Containers {
     Invoke-Expression "$DOCKER_COMPOSE up -d"
 }
 
 # Function to stop Docker containers
-function Down-Containers {
+function Stop-Containers {
     Invoke-Expression "$DOCKER_COMPOSE down"
 }
 
@@ -93,7 +104,7 @@ function Run-Server {
 # Function to deploy the server
 function Deploy {
     Build-Containers
-    Up-Containers
+    Start-Containers
     Migrate
     Collect-Static
     Run-Server
@@ -111,14 +122,21 @@ if ($args.Count -eq 0) {
 }
 
 # Test target
-test:
-    coverage run -m pytest
+function Test {
+    # Replace with your test command, e.g., 'coverage run -m pytest'
+    # Example:
+    Invoke-Expression "coverage run -m pytest"
+}
 
 # Report target
-report: test
-    coverage report
-    coverage html
-    $(BROWSER) htmlcov/index.html
+function Report {
+    Test
+    # Replace with your coverage report and HTML generation commands
+    # Example:
+    Invoke-Expression "coverage report"
+    Invoke-Expression "coverage html"
+    Invoke-Expression "$BROWSER htmlcov/index.html"
+}
 
 # Execute the specified target
 $target = $args[0]
