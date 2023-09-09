@@ -1,3 +1,4 @@
+# pylint: disable=R0903
 """
 This module defines custom forms for user registration and authentication.
 
@@ -99,6 +100,7 @@ def build_widget_config(label, is_required):
         'class': 'form-control',
     }
 
+# pylint: disable=R0913
 def get_type_field(
         type_field,
         max_length_value,
@@ -140,7 +142,7 @@ password_validators = [
     utils.validate_password_numeric,        # Numeric check
 ]
 
-
+# pylint: disable=R0901
 class CustomUserCreationForm(UserCreationForm):
     """
     Custom user registration form extending Django's built-in UserCreationForm.

@@ -9,6 +9,7 @@ Classes:
     - PostSerializer: Serializes Post model data for API representation.
 
 """
+# pylint: disable=R0903
 
 from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer
 from django.contrib.auth.models import User
@@ -53,4 +54,3 @@ class PostSerializer(ModelSerializer):
 
         model = Post
         fields = '__all__'
-

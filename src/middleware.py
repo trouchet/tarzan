@@ -1,3 +1,4 @@
+# pylint: disable=R0903
 """
 Module: middleware.py
 
@@ -56,6 +57,8 @@ class RedirectMiddleware:
         try:
             # Attempt to resolve the URL
             resolve(path)
+
+        # pylint: disable=W0718
         except BaseException:
             # If the URL cannot be resolved, it's invalid
             # Redirect to a default URL or a specific URL of your choice
