@@ -18,7 +18,7 @@ jobs:
         
     - name: Install package poetry
       run: |
-        pip install poetry
+        pip install poetry pylint
 
     - name: Install project dependencies
       run: |
