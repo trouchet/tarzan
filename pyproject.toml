@@ -18,6 +18,8 @@ pytest = "^7.4.1"
 pytest-django = "^4.5.2"
 coverage = "^7.3.0"
 ruff = "^0.0.287"
+autopep8 = "^2.0.4"
+mypy = "^1.5.1"
 
 [build-system]
 requires = ["poetry-core"]

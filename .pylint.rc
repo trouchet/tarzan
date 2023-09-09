@@ -6,7 +6,7 @@ max-nested-blocks = 5
 [MESSAGES CONTROL]
 
 # Enable or disable specific pylint messages.
-disable = C0114, C0115, C0116
+disable = C0114, C0115, C0116, E1101, R0901, R0903, R0913, too-few-public-methods
 
 [BASIC]
 
