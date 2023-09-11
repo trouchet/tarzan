@@ -57,6 +57,12 @@ whos: ## Add a rule to list ports with certain port number
 	@PORT_NUMBER=$(PORT_NUMBER) && \
     echo "$$(lsof -i ":$$PORT_NUMBER" | awk '{ print $$2 }' | awk 'NR>1')" | uniq -u
 
+which: ## Add a rule to analyze ports with certain port number
+	@PORT_NUMBER=$(PORT_NUMBER) && \
+    lsof -i ":$$PORT_NUMBER" | \
+	awk -F'\n' '{ print $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9 }' | \
+	awk 'NR>1' | uniq -u
+
 clean: # Add a rule to clean up any temporary files
 	find . -name "*.pyc" -exec rm -f {} \;
 	rm -rf venv
