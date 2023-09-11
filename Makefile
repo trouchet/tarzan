@@ -74,6 +74,9 @@ lint: ## Add a rule to clean up any temporary files
 	pre-commit run --all-files
 	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
 
+lint-check: ## Add a rule to check for code lint 
+	pylint $(git ls-files '*.py')
+
 test: ## Add a rule to test the application
 	coverage run -m pytest
 
@@ -103,10 +106,10 @@ down: ## Add a rule to docker down container
 run: ## Add a rule to run the development server.
 	$(DJANGO_MANAGE) runserver 0.0.0.0:8000
 
-check: ## Add a rule to check database connection
+db-check: ## Add a rule to check database connection
 	$(DJANGO_MANAGE) check
 
-deploy: build up check ## Add a rule to deploy the server.
+deploy: build up db-check ## Add a rule to deploy the server.
 
 sudo: ## Add a rule to add Django super user
 	$(DJANGO_MANAGE) createsuperuser

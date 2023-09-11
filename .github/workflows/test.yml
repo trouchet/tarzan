@@ -65,10 +65,21 @@ jobs:
         run: |
           poetry run pytest tests/
           # Uncomment when achieve sufficient coverage threshold
-          poetry run coverage run -m pytest
-
+          poetry run coverage run --omit='*/tests/*' -m pytest
+      
       #----------------------------------------------
       #       Update codecov coverage
+      #----------------------------------------------
+      - name: Upload coverage reports to Codecov
+        run: |
+          # Replace `linux` below with the appropriate OS
+          # Options are `alpine`, `linux`, `macos`, `windows`
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${CODECOV_TOKEN} 
+
+      #----------------------------------------------
+      #       Update codecov coverage again :-P
       #----------------------------------------------
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
