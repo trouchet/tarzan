@@ -79,6 +79,7 @@ ruff = "^0.0.287"
 autopep8 = "^2.0.4"
 mypy = "^1.5.1"
 pylint-django = "^2.5.3"
+factory-boy = "^3.3.0"
 
 [build-system]
 requires = ["poetry-core"]
