@@ -94,13 +94,13 @@ collect: # Add a rule to collect static files for production environment
 ps: ## Add a rule to list containers
 	docker ps -a
 
-build: ## Add a rule to run initial migrations and create a superuser
+build: ## Add a rule to build the docker containers
 	$(DOCKER_COMPOSE) build
 
-up: ## Add a rule to docker up container
+up: ## Add a rule to docker up containers
 	$(DOCKER_COMPOSE) up
 
-down: ## Add a rule to docker down container
+down: ## Add a rule to docker down containers
 	$(DOCKER_COMPOSE) down
 
 run: ## Add a rule to run the development server.
