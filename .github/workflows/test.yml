@@ -77,11 +77,5 @@ jobs:
           # Options are `alpine`, `linux`, `macos`, `windows`
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
-          ./codecov -t ${CODECOV_TOKEN} 
-
-      #----------------------------------------------
-      #       Update codecov coverage again :-P
-      #----------------------------------------------
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+          ./codecov -t ${CODECOV_TOKEN} -f .coverage 
 
