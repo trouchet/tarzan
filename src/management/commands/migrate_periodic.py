@@ -1,7 +1,7 @@
 """
 Module: periodic_migrations.py
 
-This module defines a custom Django management command for running 
+This module defines a custom Django management command for running
 database migrations periodically.
 
 Custom Management Command:
@@ -29,7 +29,7 @@ class Command(BaseCommand):
         """
         Handle Method
 
-        The main logic of the management command. Calls the 'migrate' management 
+        The main logic of the management command. Calls the 'migrate' management
         command to run database migrations.
 
         Args:

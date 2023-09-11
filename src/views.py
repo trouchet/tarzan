@@ -1,7 +1,7 @@
 """
 Module: views.py
 
-This module defines views, viewsets, and related functions for the Django application, 
+This module defines views, viewsets, and related functions for the Django application,
 including user authentication, posts, and profiles.
 
 Views and ViewSets:

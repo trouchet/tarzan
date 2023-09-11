@@ -215,10 +215,10 @@ class CustomUserCreationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['password'].help_text = (
-            "Your password can’t be too similar to your other personal information. "
-            "Your password must contain at least 8 characters. "
-            "Your password can’t be a commonly used password. "
-            "Your password can’t be entirely numeric.")
+            'Your password can’t be too similar to your other personal information. '
+            'Your password must contain at least 8 characters. '
+            'Your password can’t be a commonly used password. '
+            'Your password can’t be entirely numeric.')
 
     def clean_username(self):
         """
@@ -237,7 +237,7 @@ class CustomUserCreationForm(UserCreationForm):
 
         """
         username = self.cleaned_data['username']
-        
+
         # Check if the username is already taken
         if User.objects.filter(username=username).exists():
             raise ValidationError(

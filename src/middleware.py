@@ -2,7 +2,7 @@
 """
 Module: middleware.py
 
-This module defines a custom middleware class, RedirectMiddleware, for handling invalid URLs 
+This module defines a custom middleware class, RedirectMiddleware, for handling invalid URLs
 by redirecting to a default or specific URL.
 
 Classes:
@@ -33,7 +33,7 @@ class RedirectMiddleware:
         Initialize the middleware.
 
         Args:
-            get_response (callable): The next middleware or view function in the 
+            get_response (callable): The next middleware or view function in the
             request/response chain.
 
         """
@@ -47,7 +47,7 @@ class RedirectMiddleware:
             request (HttpRequest): The incoming HTTP request.
 
         Returns:
-            HttpResponseRedirect: Redirects to a default or specific URL if the requested URL 
+            HttpResponseRedirect: Redirects to a default or specific URL if the requested URL
             cannot be resolved.
 
         """

@@ -22,11 +22,11 @@ from drf_yasg import openapi
 # Create an OpenAPI schema view with the specified API information
 SchemaView = get_schema_view(
     openapi.Info(
-        title="Tarzan API",
+        title='Tarzan API',
         default_version='v1',
-        description="Django API boilerplate",
-        contact=openapi.Contact(email="brunolnetto@gmail.com"),
-        license=openapi.License(name="MIT License"),
+        description='Django API boilerplate',
+        contact=openapi.Contact(email='brunolnetto@gmail.com'),
+        license=openapi.License(name='MIT License'),
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),

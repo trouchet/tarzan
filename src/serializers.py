@@ -1,7 +1,7 @@
 """
 Module: serializers.py
 
-This module defines serializers for the Django application, including serializers for 
+This module defines serializers for the Django application, including serializers for
 User and Post models.
 
 Classes:

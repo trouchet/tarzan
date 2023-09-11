@@ -1,7 +1,7 @@
 """
 Module: urls.py
 
-This module defines the URL patterns for the Django application, 
+This module defines the URL patterns for the Django application,
 including routes for users, posts, authentication, and other views.
 
 URL Patterns:
@@ -27,7 +27,7 @@ router.register(r'posts', views.PostViewSet)
 auth_redirect = include('rest_framework.urls', namespace='rest_framework')
 
 urlpatterns = [
-    path('', views.index, name="index"),  # Default landing page.
+    path('', views.index, name='index'),  # Default landing page.
     path('', include(router.urls)),  # API routes for users and posts.
     path('signup/', views.signup, name='signup'),  # User registration view.
     path('profile/', views.profile, name='profile'),  # User profile view.
