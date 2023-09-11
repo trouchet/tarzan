@@ -3,6 +3,9 @@
 # Apply migrations
 poetry run python manage.py migrate
 
+# Creation of cache table
+python manage.py createcachetable
+
 # Collect static files
 poetry run python manage.py collectstatic --noinput
 
