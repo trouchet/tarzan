@@ -33,7 +33,7 @@ Run the commands below on `tarzan` root path:
 - **What**: build container image and host locally:
 - **How**: `make up`
 
-### List containers 
+### List containers
 
 - **What**: list containers, among them, `tarzan-box` and `tarzan-memory`:
 - **How**: `make ps`
@@ -51,4 +51,4 @@ Run the commands below on `tarzan` root path:
 ### Deploy
 
 - **What**: perform actions `build`, `up`, `migrate`, `sudo` and `run`:
-- **How**: `make start` 
+- **How**: `make start`
