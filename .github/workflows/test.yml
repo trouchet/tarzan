@@ -63,13 +63,8 @@ jobs:
       #----------------------------------------------
       - name: Run tests and generate coverage
         run: |
-<<<<<<< HEAD
           poetry run coverage run --rcfile=.coveragerc --omit='tests/*,setup/*' -m pytest
       
-=======
-          poetry run coverage run --rcfile=.coveragerc --omit='*/tests/*' -m pytest
-
->>>>>>> 56ee4ce17a16ba13fd757a99a1485726abe117d5
       #----------------------------------------------
       #       Update codecov coverage
       #----------------------------------------------
