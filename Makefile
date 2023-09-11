@@ -46,7 +46,7 @@ env: ## Add a rule to activate environment
 	poetry shell
 
 prepare: clean env ## Add a rule to activate environment and install dependencies
-	
+
 allow: ## Add a rule to allow scripts to execute
 	chmod +x *
 
@@ -89,7 +89,7 @@ build: ## Add a rule to run initial migrations and create a superuser
 	$(DOCKER_COMPOSE) build
 
 up: ## Add a rule to docker up container
-	$(DOCKER_COMPOSE) up	
+	$(DOCKER_COMPOSE) up
 
 down: ## Add a rule to docker down container
 	$(DOCKER_COMPOSE) down

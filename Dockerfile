@@ -32,5 +32,3 @@ RUN chmod +x /app/django-utils.sh
 # Start the Django development server within the virtual environment
 # Run database migrations and collect static files before starting the Django app
 CMD ["./django-utils.sh"]
-
-
