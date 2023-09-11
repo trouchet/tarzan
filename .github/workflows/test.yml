@@ -63,8 +63,6 @@ jobs:
       #----------------------------------------------
       - name: Run tests and generate coverage
         run: |
-          poetry run pytest tests/
-          # Uncomment when achieve sufficient coverage threshold
           poetry run coverage run --omit='*/tests/*' -m pytest
       
       #----------------------------------------------
