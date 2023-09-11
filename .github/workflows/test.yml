@@ -65,6 +65,9 @@ jobs:
         run: |
           poetry run coverage run --rcfile=.coveragerc --omit='*/tests/*' -m pytest
       
+      - name: Check for coverage file
+        run: ls -la .coverage
+
       #----------------------------------------------
       #       Update codecov coverage
       #----------------------------------------------
@@ -81,3 +84,4 @@ jobs:
       #----------------------------------------------
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
+
