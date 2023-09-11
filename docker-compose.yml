@@ -2,7 +2,7 @@ version: '3'
 
 services:
   db:
-    image: postgres:latest
+    image: postgres:13
     container_name: tarzan-memory
     env_file:
       - .env
