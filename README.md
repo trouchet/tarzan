@@ -1,4 +1,10 @@
+[![StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://github.com/vshymanskyy/StandWithUkraine/blob/main/docs/README.md)
+
 # ![tarzan_title](https://github.com/trouchet/tarzan/blob/133557f070ecd8c2bdc3ab0eadf0de4639000e54/static/images/tarzan_tiny)
+[![codecov](https://codecov.io/gh/trouchet/tarzan/graph/badge.svg?token=GSYO6WIEMD)](https://codecov.io/gh/trouchet/tarzan)
+![codacy](https://github.com/trouchet/tarzan/actions/workflows/codacy.yml/badge.svg)
+![pylint](https://github.com/trouchet/tarzan/actions/workflows/pylint.yml/badge.svg)
+![test](https://github.com/trouchet/tarzan/actions/workflows/test.yml/badge.svg)
 
 A Django app with routes and logging.
 
