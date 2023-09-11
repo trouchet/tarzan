@@ -11,7 +11,6 @@ Example:
     test_post_model_str_method()  # Runs the test for the Post model's string representation.
 """
 
-from src.models import Post
 from tests.factories import PostFactory
 
 def test_post_model_str_method():
