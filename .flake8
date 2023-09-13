@@ -1,0 +1,15 @@
+[flake8]
+# Maximum line length
+max-line-length = 100
+
+# Indentation width
+indent-size = 4
+
+# Use spaces for indentation (True) or tabs (False)
+use-spaces = True
+
+# Tab width (if use-spaces is False)
+tab-width = 4
+
+# Maximum allowed McCabe complexity score for a function
+max-complexity = 10
