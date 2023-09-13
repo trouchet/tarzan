@@ -1,16 +1,16 @@
 In Django, you can leverage the powerful template engine to create dynamic and data-driven web pages. Here's how you can perform these actions in the Django frontend using the template engine, template tags, and filters:
 
-1. Leverage Django's Template Engine:
+**Leverage Django's Template Engine** 
 
 Django's template engine is a powerful tool for creating dynamic web pages. It allows you to mix HTML with template tags and filters to display dynamic content from your backend in your frontend views.
 
-a. Create Templates:
+- Create Templates:
 
 Start by creating HTML templates for your web pages. Templates are typically stored in a directory named templates within your app's directory structure.
 
 For example, if you have an app named "blog," you can create a template for a blog post detail page as follows:
 
-html
+```html
 
 <!-- templates/blog/post_detail.html -->
 
@@ -24,8 +24,9 @@ html
     <p>{{ post.content }}</p>
 </body>
 </html>
+```
 
-b. Use Template Tags:
+- Use Template Tags:
 
 Django provides a wide range of template tags that you can use to embed Python logic in your templates. For example, you can use {% if %}, {% for %}, and {% block %} tags to control the flow and structure of your HTML.
 
@@ -39,7 +40,7 @@ Here's an example of using an {% if %} tag to conditionally display content:
 {% endif %}
 ```
 
-2. Use Template Filters:
+**Use Template Filters**
 
 Django template filters allow you to modify the content displayed in your templates. You can use filters to format dates, numbers, and text, among other things.
 
@@ -49,7 +50,7 @@ For example, you can use the date filter to format a date:
 <p>Published on {{ post.published_date|date:"F d, Y" }}</p>
 ```
 
-3. Pass Data to Templates:
+**Pass Data to Templates**
 
 In your views, you'll need to pass data to your templates to make them dynamic. This is typically done using the render function in Django views. For example:
 
@@ -64,7 +65,7 @@ def post_detail(request, post_id):
 
 In this example, the post object is passed to the post_detail.html template.
 
-4. Include Templates in Other Templates:
+**Include Templates in Other Templates**
 
 Django allows you to include templates within other templates using the {% include %} template tag. This is useful for reusing common components across different pages.
 
