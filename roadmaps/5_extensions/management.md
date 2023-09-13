@@ -21,7 +21,7 @@ INSTALLED_APPS = [
 ]
 ```
 
-`Apply Migrations`
+**Apply Migrations**
 
 After adding 'django_extensions' to your INSTALLED_APPS, apply migrations to create the necessary database tables:
 
@@ -29,7 +29,7 @@ After adding 'django_extensions' to your INSTALLED_APPS, apply migrations to cre
     python manage.py migrate
     ```
 
-`Using Django Extensions Commands`
+**Using Django Extensions Commands**
 
 You can now use the management commands provided by Django Extensions. Some of the commonly used commands include:
 
