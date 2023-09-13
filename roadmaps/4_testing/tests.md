@@ -1,10 +1,10 @@
 To perform unit and integration testing in a Django project and set up a pre-configured testing environment, you can follow these steps:
 
-1. Create a Django Testing Environment:
+**Create a Django Testing Environment**
 
 Django provides a testing framework that allows you to create a separate database for testing purposes, ensuring that your tests don't affect your production database. Here's how to set up a pre-configured testing environment:
 
-a. Configure Test Database:
+- Configure Test Database:
 
 In your Django project's settings (settings.py), define a separate database configuration specifically for testing. This ensures that your tests won't modify your production database. Here's an example:
 
@@ -23,19 +23,19 @@ DATABASES = {
 }
 ```
 
-b. Use TestCase for Test Classes:
+- Use TestCase for Test Classes:
 
 In your test classes, inherit from django.test.TestCase rather than the standard unittest.TestCase. The TestCase class provides utilities for setting up and tearing down the test database.
 
-c. Use Test Fixtures:
+- Use Test Fixtures:
 
 You can create fixtures (predefined data) to populate your test database with sample data. This can be helpful for testing scenarios with specific data requirements.
 
-2. Use pytest for Test Automation:
+**Use pytest for Test Automation**
 
 pytest is a popular testing framework that simplifies test writing and execution. Here's how to set up and use pytest for your Django project:
 
-a. Install pytest and Related Packages:
+- Install pytest and Related Packages:
 
 Install pytest and any necessary packages for Django testing:
 
@@ -43,7 +43,7 @@ Install pytest and any necessary packages for Django testing:
 pip install pytest pytest-django
 ```
 
-b. Create Test Files:
+- Create Test Files:
 
 Organize your tests into separate Python files within a directory named tests in your Django app(s). For example:
 
@@ -55,7 +55,7 @@ myapp/
         ...
 ```
 
-c. Write Test Functions:
+- Write Test Functions:
 
 Write test functions using pytest conventions. Test function names should start with test_. Use the django.test.Client class to simulate HTTP requests in your tests.
 
@@ -72,7 +72,7 @@ def test_my_view():
     assert response.status_code == 200
 ```
 
-d. Run Tests with pytest:
+- Run Tests with pytest:
 
 Execute your tests using the pytest command:
 
@@ -82,7 +82,7 @@ pytest
 
 pytest will automatically discover and run your tests in the tests directory.
 
-3. Use Test Fixtures (Optional):
+**Use Test Fixtures (Optional)**
 
 You can create fixtures to set up predefined data for your tests. Fixtures are defined in Python files with the .py extension and are typically stored in a fixtures directory within your app.
 
@@ -103,7 +103,7 @@ For example, you can create a sample_data.json fixture file with predefined data
 ]
 ```
 
-Then, you can load this fixture in your tests using the pytest.mark.django_db decorator:
+Then, you can load this fixture in your tests using the `pytest.mark.django_db` decorator:
 
 ```python
 # test_views.py
@@ -116,7 +116,7 @@ def test_my_view():
     # Test logic here
 ```
 
-4. Run Tests Automatically:
+**Run Tests Automatically**
 
 You can automate the execution of your tests using continuous integration (CI) tools like Travis CI, Jenkins, or GitHub Actions. These tools can automatically run your tests whenever code changes are pushed to your repository.
 
