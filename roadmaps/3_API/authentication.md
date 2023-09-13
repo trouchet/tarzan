@@ -19,7 +19,7 @@ pip install djangorestframework-jwt
 - **django-oauth-toolkit**: For OAuth2 integration, you can use the django-oauth-toolkit package:
 
 ```bash
-    pip install django-oauth-toolkit
+pip install django-oauth-toolkit
 ```
 
 **Configure Authentication in Django Settings**
@@ -52,10 +52,10 @@ OAUTH2_PROVIDER = {
 
 Token-based authentication is straightforward to implement using Django REST framework:
 
-    Create a REST API using Django REST framework and define views and serializers.
-    Configure token-based authentication as shown in the settings.
-    Generate and return tokens to authenticated users during the login process.
-    Include the token in the Authorization header of API requests.
+- Create a REST API using Django REST framework and define views and serializers.
+- Configure token-based authentication as shown in the settings.
+- Generate and return tokens to authenticated users during the login process.
+- Include the token in the Authorization header of API requests.
 
 For a detailed guide on implementing token-based authentication with Django REST framework, you can refer to the official documentation: Token-based Authentication
 
@@ -63,7 +63,7 @@ For a detailed guide on implementing token-based authentication with Django REST
 
 To implement JWT authentication, follow these steps:
 
-    Configure JWT settings in your Django project's settings:
+- Configure JWT settings in your Django project's settings:
 
 ```python
 from datetime import timedelta
@@ -73,8 +73,8 @@ JWT_AUTH = {
 }
 ```
 
-    Use the djangorestframework-jwt package to create views and serializers for JWT-based authentication.
-    Generate JWT tokens during the login process and include them in the Authorization header of API requests.
+- Use the djangorestframework-jwt package to create views and serializers for JWT-based authentication
+- Generate JWT tokens during the login process and include them in the Authorization header of API requests.
 
 For a detailed guide on implementing JWT authentication with Django REST framework, you can refer to the official documentation: JSON Web Token Authentication
 
@@ -88,7 +88,7 @@ To implement OAuth2 for third-party integrations, follow these steps:
 
 For a detailed guide on implementing OAuth2 authentication with Django, you can refer to the official documentation: Django OAuth Toolkit
 
-**Secure Your API Endpoints
+**Secure Your API Endpoints**
 
 Ensure that your API endpoints are properly secured based on the chosen authentication method. Restrict access to authenticated users and implement necessary permission checks to control data access.
 
