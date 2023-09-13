@@ -13,10 +13,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from re import findall
 from pathlib import Path
+from configparser import ConfigParser
 from decouple import config
 from drf_yasg.openapi import Info, Contact, License
-
-import configparser
 
 # Determine the path to the pyproject.toml file one folder above the current location
 current_dir = os.path.dirname(__file__)
@@ -24,7 +23,7 @@ relative_py_tol_path = os.path.join(current_dir, '..', 'pyproject.toml')
 pyproject_path = os.path.abspath(relative_py_tol_path)
 
 # Create a configparser instance and read the pyproject.toml file
-pyproject_config = configparser.ConfigParser()
+pyproject_config = ConfigParser()
 pyproject_config.read(pyproject_path)
 
 # Access values from the pyproject.toml file
@@ -35,8 +34,8 @@ project_authors = pyproject_config['tool.poetry']['authors']
 project_license = pyproject_config['tool.poetry']['license']
 
 # Extract authors' names and email addresses using regular expressions
-author_pattern = r'(.*?) <(.*?)>'
-author_matches = findall(author_pattern, project_authors)
+AUTHOR_PATTERN = r'(.*?) <(.*?)>'
+author_matches = findall(AUTHOR_PATTERN, project_authors)
 
 # Create a list of dictionaries with author names and emails
 author_info = [
