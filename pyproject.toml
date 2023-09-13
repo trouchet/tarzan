@@ -80,6 +80,7 @@ autopep8 = "^2.0.4"
 mypy = "^1.5.1"
 pylint-django = "^2.5.3"
 factory-boy = "^3.3.0"
+django-extensions = "^3.2.3"
 
 [build-system]
 requires = ["poetry-core"]
