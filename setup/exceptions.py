@@ -84,6 +84,6 @@ def custom_exception_handler(exc, context):
 
     if response is not None:
         # Customize the error response here if needed
-        response.data["status_code"] = response.status_code
+        response.data['status_code'] = response.status_code
 
     return response
