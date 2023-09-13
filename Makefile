@@ -42,6 +42,22 @@ export PRINT_HELP_PYSCRIPT
 help: ## Add a rule to list commands
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
+clean-logs: # Add a rule to remove log info
+	rm -fr build/ dist/ .eggs/
+	find . -name '*.log' -o -name '*.log' -exec rm -fr {} +
+
+clean-pyc: # Add a rule to remove pyc files
+	find . -name '*.pyc' -o -name '*.pyo' -o -name '*~' -exec rm -rf {} +
+
+clean-test: # remove test and coverage artifacts
+	rm -fr .tox/ .coverage coverage.* htmlcov/ .pytest_cache
+
+clean-cache: # remove test and coverage artifacts
+	find . -name '*cache*' -exec rm -rf {} +
+
+clean: clean-logs clean-pyc clean-test clean-cache ## Add a rule to remove unnecessary assets
+	$(DOCKER) system prune --volumes -f
+
 env: ## Add a rule to activate environment
 	poetry shell
 
@@ -63,12 +79,6 @@ which: ## Add a rule to analyze ports with certain port number
 	awk -F'\n' '{ print $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9 }' | \
 	awk 'NR>1' | uniq -u
 
-clean: # Add a rule to clean up any temporary files
-	find . -name "*.pyc" -exec rm -f {} \;
-	rm -rf venv
-	rm -rf htmlcov
-	$(DOCKER) system prune --volumes -f
-
 lint: ## Add a rule to clean up any temporary files
 	ruff --fix .
 	pre-commit run --all-files
@@ -79,6 +89,12 @@ lint-check: ## Add a rule to check for code lint
 
 test: ## Add a rule to test the application
 	coverage run -m pytest
+
+swagger-json: ## Add a rule to generate swagger in json format
+	$(DJANGO_MANAGE) generate_swagger
+
+swagger-yaml: ## Add a rule to generate swagger in yaml format
+	$(DJANGO_MANAGE) generateschema
 
 report: ## Add a rule to generate coverage report
 	coverage report
