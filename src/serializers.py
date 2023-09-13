@@ -15,6 +15,7 @@ from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializ
 from django.contrib.auth.models import User
 from .models import Post
 
+
 class CustomUserSerializer(HyperlinkedModelSerializer):
     """
     CustomUserSerializer Class
@@ -34,8 +35,10 @@ class CustomUserSerializer(HyperlinkedModelSerializer):
             - email (EmailField): The email address of the user.
             - is_staff (BooleanField): Indicates whether the user is a staff member.
         """
+
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = ["url", "username", "email", "is_staff"]
+
 
 class PostSerializer(ModelSerializer):
     """
@@ -53,4 +56,4 @@ class PostSerializer(ModelSerializer):
         """
 
         model = Post
-        fields = '__all__'
+        fields = "__all__"

@@ -13,6 +13,7 @@ Classes:
 from django.urls import resolve
 from django.http import HttpResponseRedirect
 
+
 class RedirectMiddleware:
     """
     RedirectMiddleware Class
@@ -62,7 +63,7 @@ class RedirectMiddleware:
         except BaseException:
             # If the URL cannot be resolved, it's invalid
             # Redirect to a default URL or a specific URL of your choice
-            return HttpResponseRedirect('/api/')
+            return HttpResponseRedirect("/api/")
 
         # Continue processing the request/response chain
         response = self.get_response(request)

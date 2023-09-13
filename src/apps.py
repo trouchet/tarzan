@@ -32,6 +32,7 @@ Example Usage (settings.py):
 # Import the necessary module
 from django.apps import AppConfig
 
+
 # Define the AppConfig class for the 'src' app
 class MyappConfig(AppConfig):
     """
@@ -45,5 +46,5 @@ class MyappConfig(AppConfig):
 
     """
 
-    default_auto_field = 'django.db.models.BigAutoField'
-    name = 'src'
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "src"

@@ -68,11 +68,11 @@ def validate_username(username):
     The username must be 150 characters or fewer and can only contain letters, digits,
     and the special characters @, ., +, -, and _.
     """
-    pattern = r'^[\w.@+-]+$'
+    pattern = r"^[\w.@+-]+$"
 
     if not re.match(pattern, username):
         raise ValidationError(
-            'Username must be 150 characters or fewer. Letters, digits, and @/./+/-/_ only.'
+            "Username must be 150 characters or fewer. Letters, digits, and @/./+/-/_ only."
         )
 
 
@@ -101,9 +101,7 @@ def validate_password_length(password):
         ValidationError: If the password is shorter than 8 characters.
     """
     if len(password) < 8:
-        raise ValidationError(
-            'Your password must contain at least 8 characters.'
-        )
+        raise ValidationError("Your password must contain at least 8 characters.")
 
 
 def validate_common_password(password):

@@ -13,6 +13,7 @@ Example:
 
 from tests.factories import PostFactory
 
+
 def test_post_model_str_method():
     """
     Test the string representation method of the Post model.
