@@ -84,7 +84,7 @@ lint: ## Add a rule to clean up any temporary files
 	pre-commit run --all-files
 	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
 
-lint-check: ## Add a rule to check for code lint 
+lint-check: ## Add a rule to check for code lint
 	pylint $(git ls-files '*.py')
 
 test: ## Add a rule to test the application
