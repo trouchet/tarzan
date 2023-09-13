@@ -24,7 +24,7 @@ Create deployment scripts or configuration files to automate the deployment proc
 Ensure that your database is configured correctly in your deployment environment. This may involve creating a database instance and running database migrations.
 
 **Static and Media Files**
-    
+
 Configure your cloud environment to serve static and media files. In AWS, you can use services like Amazon S3 and CloudFront. In Heroku, you can use the Heroku Postgres database for media files and cloud storage for static files.
 
 **Continuous Integration and Deployment (CI/CD)**
@@ -40,7 +40,7 @@ Configure monitoring and scaling options to ensure your application runs smoothl
 If you're using HTTPS, make sure to configure SSL/TLS certificates for secure communication between clients and your application.
 
 **Documentation**
-    
+
 Document your deployment process and scripts for future reference and collaboration with your team.
 
 Deployment scripts and configurations can vary significantly depending on the cloud provider and your application's specific requirements. You should refer to the official documentation of your chosen cloud provider and any third-party services or tools you use for deployment for detailed guidance and best practices.

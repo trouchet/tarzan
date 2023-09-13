@@ -80,7 +80,7 @@ Here's a basic example of including Bootstrap CSS and JavaScript in your HTML te
 </head>
 <body>
     <!-- Your content here -->
-    
+
     <!-- Include Bootstrap JavaScript (optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 </body>

@@ -17,7 +17,7 @@ When Not to Integrate a JavaScript Framework:
 
 Ultimately, the decision to integrate a JavaScript framework should align with your project's goals, complexity, and the skills of your development team. You can achieve dynamic user interfaces using Django's template engine combined with JavaScript or jQuery if the project requirements are relatively simple. However, for more complex applications, integrating a JavaScript framework can provide significant benefits in terms of maintainability and user experience.
 
-How: 
+How:
 
 Integrating a JavaScript framework like React or Vue.js into a Django project for a dynamic user interface and creating API endpoints for frontend communication using REST or GraphQL involves several steps. Here's how you can perform these actions:
 

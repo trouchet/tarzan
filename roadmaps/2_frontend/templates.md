@@ -1,6 +1,6 @@
 In Django, you can leverage the powerful template engine to create dynamic and data-driven web pages. Here's how you can perform these actions in the Django frontend using the template engine, template tags, and filters:
 
-**Leverage Django's Template Engine** 
+**Leverage Django's Template Engine**
 
 Django's template engine is a powerful tool for creating dynamic web pages. It allows you to mix HTML with template tags and filters to display dynamic content from your backend in your frontend views.
 
