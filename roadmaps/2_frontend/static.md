@@ -1,10 +1,10 @@
 Managing static files and integrating a frontend framework like Bootstrap or Tailwind CSS in Django is essential for creating a polished and efficient user interface. Here's how you can perform these actions:
 
-1. Manage Static Files Efficiently:
+**Manage Static Files Efficiently**
 
 Django provides a built-in way to manage static files such as CSS, JavaScript, and images. To efficiently handle static files, follow these steps:
 
-a. Configure Static Files:
+- Configure Static Files:
 
 In your project's settings file (settings.py), make sure the following settings are configured:
 
@@ -16,7 +16,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 ```
 
-b. Organize Your Static Files:
+- Organize Your Static Files:
 
 Create a directory structure within your project's static/ directory to organize your static files. For example:
 
@@ -31,7 +31,7 @@ project_name/
             logo.png
 ```
 
-c. Use the {% static %} Template Tag:
+- Use the {% static %} Template Tag:
 
 In your HTML templates, use the {% static %} template tag to reference static files. For example:
 
@@ -39,7 +39,7 @@ In your HTML templates, use the {% static %} template tag to reference static fi
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 ```
 
-d. Collect Static Files:
+- Collect Static Files:
 
 Before deploying your application to a production server, run the following command to collect all static files into a single directory:
 
@@ -47,24 +47,24 @@ Before deploying your application to a production server, run the following comm
 python manage.py collectstatic
 ```
 
-2. Integrate a Frontend Framework:
+**Integrate a Frontend Framework**
 
 You can integrate popular frontend frameworks like Bootstrap or Tailwind CSS into your Django project for a polished user interface.
 
-a. Integrating Bootstrap:
+- Integrating Bootstrap:
 
-    Install Bootstrap using a package manager like npm or include it via a CDN.
-    Link Bootstrap's CSS and JavaScript files in your HTML templates.
-    Customize and extend Bootstrap styles as needed.
-    Use Bootstrap classes in your HTML templates to create responsive and styled UI components.
+  - Install Bootstrap using a package manager like npm or include it via a CDN.
+  - Link Bootstrap's CSS and JavaScript files in your HTML templates.
+  - Customize and extend Bootstrap styles as needed.
+  - Use Bootstrap classes in your HTML templates to create responsive and styled UI components.
 
-b. Integrating Tailwind CSS:
+- Integrating Tailwind CSS:
 
-    Install Tailwind CSS using npm or yarn.
-    Create a custom CSS file where you define your Tailwind CSS classes.
-    Configure PostCSS and purge unused CSS to optimize file size.
-    Include the generated CSS file in your HTML templates.
-    Use Tailwind CSS classes in your HTML templates to build UI components.
+  - Install Tailwind CSS using npm or yarn.
+  - Create a custom CSS file where you define your Tailwind CSS classes.
+  - Configure PostCSS and purge unused CSS to optimize file size.
+  - Include the generated CSS file in your HTML templates.
+  - Use Tailwind CSS classes in your HTML templates to build UI components.
 
 Here's a basic example of including Bootstrap CSS and JavaScript in your HTML template:
 
