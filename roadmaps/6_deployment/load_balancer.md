@@ -4,27 +4,25 @@ Load balancing and scaling are essential for handling increased traffic and ensu
 
 To scale your Django application, you should set up multiple application servers, each running a copy of your application. This can be done by:
 
-    Adding More Servers: You can provision additional servers (physical or virtual) and set up your Django application on each of them. Make sure all servers have the same codebase and are synchronized with the same database.
+- **Adding More Servers**: You can provision additional servers (physical or virtual) and set up your Django application on each of them. Make sure all servers have the same codebase and are synchronized with the same database.
 
-    Containerization: You can use containerization platforms like Docker to create application server containers. This makes it easier to manage and scale your application across different hosts.
+- **Containerization**: You can use containerization platforms like Docker to create application server containers. This makes it easier to manage and scale your application across different hosts.
 
 **Database Scaling**
 
 Scaling the database is crucial as your application scales. Options include:
 
-    Vertical Scaling: Increase the resources (CPU, RAM) of your database server. This is suitable for moderate increases in traffic.
-
-    Horizontal Scaling (Sharding): Distribute your data across multiple database servers. You can use database sharding techniques like table-based or shard-based sharding to achieve this.
-
-    Database Replication: Set up database replication to create read replicas for handling read-heavy traffic. This can offload some of the read queries from the primary database.
+-**Vertical Scaling**: Increase the resources (CPU, RAM) of your database server. This is suitable for moderate increases in traffic.
+-**Horizontal Scaling (Sharding)**: Distribute your data across multiple database servers. You can use database sharding techniques like table-based or shard-based sharding to achieve this.
+-**Database Replication**: Set up database replication to create read replicas for handling read-heavy traffic. This can offload some of the read queries from the primary database.
 
 **Load Balancing**
 
 Implement load balancing to distribute incoming traffic evenly across multiple application servers. You can use a dedicated load balancer or a reverse proxy like Nginx or HAProxy for this purpose:
 
-    Dedicated Load Balancer: You can use hardware load balancers like F5 or cloud-based load balancers offered by cloud providers like AWS Elastic Load Balancer (ELB) or Google Cloud Load Balancing.
+- **Dedicated Load Balancer**: You can use hardware load balancers like F5 or cloud-based load balancers offered by cloud providers like AWS Elastic Load Balancer (ELB) or Google Cloud Load Balancing.
 
-    Software Load Balancer (Nginx or HAProxy): Configure Nginx or HAProxy as a load balancer to distribute traffic to multiple application server instances. Here's an example Nginx configuration for load balancing:
+- **Software Load Balancer (Nginx or HAProxy)**: Configure Nginx or HAProxy as a load balancer to distribute traffic to multiple application server instances. Here's an example Nginx configuration for load balancing:
 
 ```nginx
 upstream django_backend {
