@@ -1,10 +1,10 @@
 Configuring logging and including a debug toolbar in Django for development and production environments are essential steps for efficient debugging and monitoring. Here's how you can perform these actions:
 
-1. Configure Logging for Development and Production:
+**Configure Logging for Development and Production**:
 
 Django provides a flexible logging system that allows you to configure how logs are handled in different environments. You can set up logging in your project's settings file (settings.py).
 
-a. Basic Configuration:
+- Basic Configuration:
 
 ```python
 
@@ -40,7 +40,7 @@ LOGGING = {
 }
 ```
 
-b. Usage:
+- Usage:
 
 Now, you can use the Python logging module to log messages at different levels (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL) throughout your Django application.
 
@@ -59,11 +59,11 @@ def my_view(request):
     logger.error('This is an error message.')
 ```
 
-2. Include a Debug Toolbar for Development:
+**Include a Debug Toolbar for Development**:
 
 The Django Debug Toolbar is a powerful tool for debugging and optimizing Django applications during development. It provides insights into SQL queries, cache usage, template rendering times, and more.
 
-a. Install the Debug Toolbar:
+- Install the Debug Toolbar:
 
 Install the Django Debug Toolbar using pip:
 
@@ -71,7 +71,7 @@ Install the Django Debug Toolbar using pip:
 pip install django-debug-toolbar
 ```
 
-b. Configure the Debug Toolbar:
+- Configure the Debug Toolbar:
 
 In your settings.py file, add 'debug_toolbar' to your INSTALLED_APPS and configure the middleware:
 
@@ -101,7 +101,7 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 ```
 
-c. Include the Toolbar in Templates:
+- Include the Toolbar in Templates:
 
 In your base template (e.g., base.html), include the {% debug_toolbar %} template tag:
 
@@ -122,7 +122,7 @@ In your base template (e.g., base.html), include the {% debug_toolbar %} templat
 </html>
 ```
 
-d. Run the Development Server:
+- Run the Development Server:
 
 When you run the development server (python manage.py runserver), you'll see the debug toolbar at the top of your web pages. Clicking on it provides detailed information about the request, SQL queries, and more.
 

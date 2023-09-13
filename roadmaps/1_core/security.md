@@ -5,10 +5,11 @@ Implement Essential Security Measures:
 a. CSRF Protection: Django provides built-in CSRF protection. Ensure that the {% csrf_token %} template tag is included in all your forms. Django middleware automatically handles CSRF protection.
 b. XSS Prevention: Django template engine automatically escapes variables to prevent Cross-Site Scripting (XSS) attacks. However, make sure that you don't mark content as safe using |safe filter unless you're absolutely certain it's safe.
 
-Use Secure Password Handling Techniques:
+**Use Secure Password Handling Techniques**
 
-a. Bcrypt or Argon2: Django uses the PBKDF2 algorithm for password hashing by default, which is considered secure. However, you can enhance security by using third-party packages like bcrypt or argon2-cffi for password hashing.
-b. Update Django Settings: To use a different password hashing algorithm, update the PASSWORD_HASHERS setting in your Django project's settings file. For example, to use bcrypt, you can set it as follows:
+- Bcrypt or Argon2: Django uses the PBKDF2 algorithm for password hashing by default, which is considered secure. However, you can enhance security by using third-party packages like bcrypt or argon2-cffi for password hashing.
+
+- Update Django Settings: To use a different password hashing algorithm, update the PASSWORD_HASHERS setting in your Django project's settings file. For example, to use bcrypt, you can set it as follows:
 
 ```python
 PASSWORD_HASHERS = [
@@ -17,9 +18,9 @@ PASSWORD_HASHERS = [
 ]
 ```
 
-Add Rate Limiting and IP Blocking:
+**Add Rate Limiting and IP Blocking**
 
-a. Rate Limiting: You can implement rate limiting to thwart brute-force attacks by using Django's built-in ratelimit decorator or middleware. Here's an example of using the ratelimit decorator:
+- Rate Limiting: You can implement rate limiting to thwart brute-force attacks by using Django's built-in ratelimit decorator or middleware. Here's an example of using the ratelimit decorator:
 
 ```python
 from django.views.decorators.csrf import csrf_exempt
@@ -31,7 +32,7 @@ def login(request):
     # Your login logic here
 ```
 
-b. IP Blocking: To block IPs after repeated failed login attempts, you can implement custom middleware or use third-party packages like django-axes. django-axes allows you to configure IP blocking thresholds and actions.
+- IP Blocking: To block IPs after repeated failed login attempts, you can implement custom middleware or use third-party packages like django-axes. django-axes allows you to configure IP blocking thresholds and actions.
 
 Install django-axes using pip:
 
