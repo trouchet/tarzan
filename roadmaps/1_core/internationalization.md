@@ -1,28 +1,28 @@
 To support multiple languages and locales for a global audience in a Django application, you can follow these steps:
 
-Configure Django Settings:
+**Configure Django Settings**:
 
 Open your Django project's settings file (settings.py) and make the following configurations:
 
-    a. Set USE_I18N to True:
+Set USE_I18N to True:
 
 ```python
 USE_I18N = True
 ```
 
-b. Set USE_L10N to True:
+Set USE_L10N to True:
 
 ```python
 USE_L10N = True
 ```
 
-c. Set LANGUAGE_CODE to the default language you want to use (e.g., English):
+Set LANGUAGE_CODE to the default language you want to use (e.g., English):
 
 ```python
 LANGUAGE_CODE = 'en-us'
 ```
 
-d. Specify Supported Languages:
+**Specify Supported Languages**:
 
 Define the languages and locales you want to support using the LANGUAGES setting. For example:
 
@@ -140,9 +140,9 @@ LANGUAGES = [
 ]
 ```
 
-Create Translation Files:
+**Create Translation Files**:
 
-a. Run the following command to generate translation files for your project:
+Run the following command to generate translation files for your project:
 
 ```bash
 python manage.py makemessages -l [language_code]
@@ -150,23 +150,25 @@ python manage.py makemessages -l [language_code]
 
 Replace [language_code] with the language code for the language you want to add translations for (e.g., es for Spanish).
 
-b. In the project's root directory, navigate to the locale directory inside the app where you ran makemessages. Inside the locale directory, you'll find subdirectories for each language you specified in LANGUAGES.
-c. In each language subdirectory, you'll find a .po file (e.g., django.po). Open this file in a text editor and add translations for each string that needs to be translated.
-d. After adding translations, compile the .po files into .mo files by running:
+In the project's root directory, navigate to the locale directory inside the app where you ran makemessages. Inside the locale directory, you'll find subdirectories for each language you specified in LANGUAGES.
+
+In each language subdirectory, you'll find a .po file (e.g., django.po). Open this file in a text editor and add translations for each string that needs to be translated.
+
+After adding translations, compile the .po files into .mo files by running:
 
 ```bash
 python manage.py compilemessages
 ```
 
-Internationalize Templates and Python Code:
+**Internationalize Templates and Python Code**:
 
-a. In your templates, wrap text that needs translation with the {% trans %} template tag. For example:
+In your templates, wrap text that needs translation with the {% trans %} template tag. For example:
 
 ```html
 <h1>{% trans "Welcome" %}</h1>
 ```
 
-b. In Python code, use the gettext method for translation. For example:
+In Python code, use the gettext method for translation. For example:
 
 ```python
 from django.utils.translation import gettext as _
@@ -174,10 +176,11 @@ from django.utils.translation import gettext as _
 message = _("Hello, World!")
 ```
 
-Enable Language Switching:
+**Enable Language Switching**:
 
-a. To allow users to switch between languages, create a language switcher in your templates. You can use the set_language view provided by Django to change the language dynamically.
-b. Create a form or a dropdown menu in your templates to allow users to select their preferred language and submit the form to the set_language view.
+To allow users to switch between languages, create a language switcher in your templates. You can use the set_language view provided by Django to change the language dynamically.
+
+Create a form or a dropdown menu in your templates to allow users to select their preferred language and submit the form to the set_language view.
 
 Handle Date, Time, and Number Formats:
 
