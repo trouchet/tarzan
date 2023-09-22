@@ -80,24 +80,25 @@ which: ## Add a rule to analyze ports with certain port number
 	awk 'NR>1' | uniq -u
 
 lint: ## Add a rule to clean up any temporary files
+	black --skip-string-normalization .
 	ruff --fix .
 	pre-commit run --all-files
 	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
 
 lint-check: ## Add a rule to check for code lint
-	pylint $(git ls-files '*.py')
+	pylint $(find . -type f -name '*.py')
 
 test: ## Add a rule to test the application
-	coverage run -m pytest
+	coverage run -m pytest --nomigrations --ignore=src/migrations
 
-swagger-json: ## Add a rule to generate swagger in json format
+swagger: ## Add a rule to generate swagger in json format
 	$(DJANGO_MANAGE) generate_swagger
 
-swagger-yaml: ## Add a rule to generate swagger in yaml format
+schema: ## Add a rule to generate swagger in yaml format
 	$(DJANGO_MANAGE) generateschema
 
-report: ## Add a rule to generate coverage report
-	coverage report
+report: clean test ## Add a rule to generate coverage report
+	coverage report --omit="src/migrations/*"
 	coverage html
 	$(BROWSER) htmlcov/index.html
 

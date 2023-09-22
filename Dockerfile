@@ -23,12 +23,9 @@ COPY scripts/django-utils.sh /app/
 RUN poetry config virtualenvs.create false && \
     poetry install --only main --no-interaction --no-ansi
 
-# Expose the port on which your Django app will run (e.g., 8000)
-EXPOSE 8000
-
 # Set executable permissions for the script
 RUN chmod +x /app/django-utils.sh
 
 # Start the Django development server within the virtual environment
 # Run database migrations and collect static files before starting the Django app
-CMD ["./django-utils.sh"]
+CMD ["./django-utils.sh", "${HOST_PORT}"]

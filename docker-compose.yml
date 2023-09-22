@@ -8,15 +8,17 @@ services:
       - .env
     ports:
       - "5432:5432"
-
   web:
     build:
       context: .
-      dockerfile: Dockerfile
     container_name: tarzan-box
     env_file:
       - .env
     ports:
-      - "8000:8000"
+      - "${HOST_PORT}:${HOST_PORT}"
     depends_on:
       - db
+    environment:
+      - HOST_PORT=${HOST_PORT}
+    command: ["./django-utils.sh", "${HOST_PORT}"]
+
