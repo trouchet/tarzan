@@ -122,6 +122,7 @@ SWAGGER_SETTINGS = {
 }
 
 MIDDLEWARE = [
+    'src.middleware.RedirectMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -157,17 +158,25 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DB_SETUP_DICT = {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': config('POSTGRES_DB'),
-    'USER': config('POSTGRES_USER'),
-    'PASSWORD': config('POSTGRES_PASSWORD'),
-    'HOST': config('POSTGRES_HOST'),
-    'PORT': config('POSTGRES_PORT'),
+    'NAME': config('DATABASE_NAME'),
+    'USER': config('DATABASE_USER'),
+    'PASSWORD': config('DATABASE_PASSWORD'),
+    'HOST': config('DATABASE_HOST'),
+    'PORT': config('DATABASE_PORT'),
 }
 
 DATABASES = {
     'default': DB_SETUP_DICT,
     'test': DB_SETUP_DICT,
 }
+
+# Use an in-memory database for tests to avoid modifying your development or production database
+from sys import argv
+if 'test' in argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': ':memory:',
+    }
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
