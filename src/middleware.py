@@ -10,7 +10,7 @@ Classes:
 
 """
 
-from django.urls import resolve
+from django.urls import resolve, Resolver404
 from django.http import HttpResponseRedirect
 
 
@@ -29,7 +29,7 @@ class RedirectMiddleware:
 
     """
 
-    def __init__(self, get_response):
+    def __init__(self, get_response, redirect_url='/api/'):
         """
         Initialize the middleware.
 
@@ -39,6 +39,7 @@ class RedirectMiddleware:
 
         """
         self.get_response = get_response
+        self.redirect_url = redirect_url
 
     def __call__(self, request):
         """
@@ -54,17 +55,19 @@ class RedirectMiddleware:
         """
         # Get the URL path from the request
         path = request.path_info
-
+        
         try:
             # Attempt to resolve the URL
             resolve(path)
 
         # pylint: disable=W0718
-        except BaseException:
+        except Resolver404:
             # If the URL cannot be resolved, it's invalid
             # Redirect to a default URL or a specific URL of your choice
-            return HttpResponseRedirect('/api/')
+            return HttpResponseRedirect(self.redirect_url)
 
         # Continue processing the request/response chain
         response = self.get_response(request)
+            
         return response
+
