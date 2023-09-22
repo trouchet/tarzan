@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# Function to display usage information
+usage() {
+    echo "Usage: $0 <port>"
+    exit 1
+}
+
+# Check if the port argument is provided
+if [ $# -ne 1 ]; then
+    usage
+fi
+
+port="$1"
+
 # Apply migrations
 poetry run python manage.py migrate
 
@@ -10,4 +23,4 @@ python manage.py createcachetable
 poetry run python manage.py collectstatic --noinput
 
 # Start the Django development server
-exec poetry run python manage.py runserver 0.0.0.0:8000
+exec poetry run python manage.py runserver 0.0.0.0:"$port"
