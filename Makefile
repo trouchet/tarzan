@@ -90,7 +90,7 @@ lint-check: ## Add a rule to check for code lint
 
 test: ## Add a rule to test the application
 	coverage run -m pytest --nomigrations --ignore=src/migrations
-	poetry run coverage run --rcfile=.coveragerc --omit='lambda_api/model_resolver.py' -m pytest
+	poetry run coverage run --rcfile=.coveragerc -m pytest
 	
 swagger: ## Add a rule to generate swagger in json format
 	$(DJANGO_MANAGE) generate_swagger
@@ -99,7 +99,7 @@ schema: ## Add a rule to generate swagger in yaml format
 	$(DJANGO_MANAGE) generateschema
 
 report: clean test ## Add a rule to generate coverage report
-	coverage report --omit="lambda_api/model_resolver.py"
+	coverage report
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
