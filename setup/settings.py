@@ -14,6 +14,7 @@ import os
 from re import findall
 from pathlib import Path
 from configparser import ConfigParser
+from sys import argv
 from decouple import config
 from drf_yasg.openapi import Info, Contact, License
 
@@ -171,8 +172,6 @@ DATABASES = {
 }
 
 # Use an in-memory database for tests to avoid modifying your development or production database
-from sys import argv
-
 if "test" in argv:
     DATABASES["default"] = {
         "ENGINE": "django.db.backends.postgresql",
