@@ -7,7 +7,6 @@ This module provides fixtures for setting up test data.
 import pytest
 from django.test import RequestFactory, Client
 from src.middleware import RedirectMiddleware
-from src.middleware import RedirectMiddleware
 
 redirect_middleware = RedirectMiddleware(get_response=None)
 
@@ -45,7 +44,7 @@ def client():
 
 
 @pytest.fixture
-def rf():
+def request_factory():
     """
     Fixture for creating an instance of the Django RequestFactory. The RequestFactory is a utility
     for creating request objects, which can be used to simulate HTTP requests in Django test cases.

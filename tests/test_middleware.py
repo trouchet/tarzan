@@ -1,3 +1,4 @@
+# pylint: disable=R0903
 """
 This module contains test cases for the RedirectMiddleware in a Django application.
 
@@ -20,19 +21,17 @@ the provided test cases. Actual behavior may vary depending on the real implemen
 middleware.
 """
 
-from .fixtures import client, middleware, rf 
-
 REDIRECT_URL = "/api/"
 VALID_URL = REDIRECT_URL
 INVALID_URL = "/invalid/"
 
-def test_valid_url(middleware, rf):
+def test_valid_url(middleware, request_factory):
     """
     Test case to verify that a valid URL is not redirected when processed by the RedirectMiddleware.
 
     Parameters:
         - middleware: An instance of the RedirectMiddleware fixture.
-        - rf: An instance of the RequestFactory fixture.
+        - request_factory: An instance of the RequestFactory fixture.
 
     Test Steps:
     1. Creates a request object for a valid URL using the RequestFactory.
@@ -45,7 +44,7 @@ def test_valid_url(middleware, rf):
         actual behavior may depend on the real implementation of the middleware.
     """
     # Test a valid URL should not be redirected
-    request = rf.get(VALID_URL)
+    request = request_factory.get(VALID_URL)
     response = middleware(request)
     assert response == "42"
 
