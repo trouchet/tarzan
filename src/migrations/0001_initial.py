@@ -20,25 +20,25 @@ from django.db.migrations import RunPython
 # Post model
 post_fields = [
     (
-        'id',
+        "id",
         BigAutoField(
             auto_created=True,
             primary_key=True,
             serialize=False,
-            verbose_name='ID',
+            verbose_name="ID",
         ),
     ),
-    ('title', CharField(max_length=200)),
-    ('content', TextField()),
-    ('pub_date', DateTimeField(verbose_name='date published')),
+    ("title", CharField(max_length=200)),
+    ("content", TextField()),
+    ("pub_date", DateTimeField(verbose_name="date published")),
 ]
 post_model_args = {
-    'name': 'Post',
-    'fields': post_fields,
+    "name": "Post",
+    "fields": post_fields,
 }
 post_operation = CreateModel(
-    name=post_model_args['name'],
-    fields=post_model_args['fields'],
+    name=post_model_args["name"],
+    fields=post_model_args["fields"],
 )
 
 
@@ -54,16 +54,16 @@ def insert_posts(apps, schema_editor):
         schema_editor: The schema editor used for the migration.
 
     """
-    post_model = apps.get_model('src', 'Post')
+    post_model = apps.get_model("src", "Post")
 
     # Load sample data from a JSON file
-    with open('./sample_posts.json', encoding='utf-8') as json_file:
+    with open("./sample_posts.json", encoding="utf-8") as json_file:
         sample_data = load(json_file)
 
     # Insert the data into the 'Post' model
     for data in sample_data:
         post_model.objects.create(
-            title=data['title'], content=data['content'], pub_date=data['pub_date']
+            title=data["title"], content=data["content"], pub_date=data["pub_date"]
         )
 
 

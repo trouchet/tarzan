@@ -29,7 +29,7 @@ class RedirectMiddleware:
 
     """
 
-    def __init__(self, get_response, redirect_url='/api/'):
+    def __init__(self, get_response, redirect_url="/api/"):
         """
         Initialize the middleware.
 
@@ -55,7 +55,7 @@ class RedirectMiddleware:
         """
         # Get the URL path from the request
         path = request.path_info
-        
+
         try:
             # Attempt to resolve the URL
             resolve(path)
@@ -68,6 +68,5 @@ class RedirectMiddleware:
 
         # Continue processing the request/response chain
         response = self.get_response(request)
-            
-        return response
 
+        return response

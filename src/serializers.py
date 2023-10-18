@@ -37,7 +37,7 @@ class CustomUserSerializer(HyperlinkedModelSerializer):
         """
 
         model = User
-        fields = ['url', 'username', 'email', 'is_staff']
+        fields = ["url", "username", "email", "is_staff"]
 
 
 class PostSerializer(ModelSerializer):
@@ -56,4 +56,4 @@ class PostSerializer(ModelSerializer):
         """
 
         model = Post
-        fields = '__all__'
+        fields = "__all__"

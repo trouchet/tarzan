@@ -43,7 +43,7 @@ def index(request):
         HttpResponse: Renders the 'src/index.html' template.
 
     """
-    return render(request, 'src/index.html')
+    return render(request, "src/index.html")
 
 
 # ViewSets define the view behavior.
@@ -99,8 +99,8 @@ class CustomLoginView(LoginView):
 
     """
 
-    template_name = 'src/login.html'
-    success_url = '/profile/'
+    template_name = "src/login.html"
+    success_url = "/profile/"
 
 
 class CustomLogoutView(BaseLogoutView):
@@ -115,8 +115,8 @@ class CustomLogoutView(BaseLogoutView):
 
     """
 
-    template_name = 'src/logout.html'
-    next_page = reverse_lazy('login')
+    template_name = "src/logout.html"
+    next_page = reverse_lazy("login")
 
 
 def signup(request):
@@ -132,7 +132,7 @@ def signup(request):
         HttpResponse: Renders the 'src/signup.html' template with the registration form.
 
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             # Save the form, which includes first_name, last_name, and email fields
@@ -142,11 +142,11 @@ def signup(request):
             login(request, form.instance)
 
             # Redirect to the user's profile page
-            return redirect('profile')
+            return redirect("profile")
     else:
         form = CustomUserCreationForm()
 
-    return render(request, 'src/signup.html', {'form': form})
+    return render(request, "src/signup.html", {"form": form})
 
 
 @login_required
@@ -165,4 +165,4 @@ def profile(request):
     """
     # Fetch and display user information
     user = request.user
-    return render(request, 'src/profile.html', {'user': user})
+    return render(request, "src/profile.html", {"user": user})

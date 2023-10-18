@@ -77,7 +77,7 @@ def label_input(text, is_required):
     """
 
     if is_required:
-        label_text = f'{text}*'
+        label_text = f"{text}*"
     else:
         label_text = text
     return label_text
@@ -99,8 +99,8 @@ def build_widget_config(label, is_required):
     """
 
     return {
-        'placeholder': label_input(label, is_required),
-        'class': 'form-control',
+        "placeholder": label_input(label, is_required),
+        "class": "form-control",
     }
 
 
@@ -192,13 +192,13 @@ class CustomUserCreationForm(UserCreationForm):
         ```
     """
 
-    username = get_type_field(CharField, 150, True, 'Username', TextInput, [])
+    username = get_type_field(CharField, 150, True, "Username", TextInput, [])
     password = get_type_field(
-        CharField, 150, True, 'Password', PasswordInput, password_validators
+        CharField, 150, True, "Password", PasswordInput, password_validators
     )
-    first_name = get_type_field(CharField, 30, True, 'First Name', TextInput, [])
-    last_name = get_type_field(CharField, 30, True, 'Last Name', TextInput, [])
-    email = get_type_field(EmailField, 254, True, 'Email', TextInput, [])
+    first_name = get_type_field(CharField, 30, True, "First Name", TextInput, [])
+    last_name = get_type_field(CharField, 30, True, "Last Name", TextInput, [])
+    email = get_type_field(EmailField, 254, True, "Email", TextInput, [])
 
     class Meta:
         """
@@ -209,15 +209,15 @@ class CustomUserCreationForm(UserCreationForm):
         """
 
         model = User
-        fields = ('username', 'password', 'first_name', 'last_name', 'email')
+        fields = ("username", "password", "first_name", "last_name", "email")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['password'].help_text = (
-            'Your password can’t be too similar to your other personal information. '
-            'Your password must contain at least 8 characters. '
-            'Your password can’t be a commonly used password. '
-            'Your password can’t be entirely numeric.'
+        self.fields["password"].help_text = (
+            "Your password can’t be too similar to your other personal information. "
+            "Your password must contain at least 8 characters. "
+            "Your password can’t be a commonly used password. "
+            "Your password can’t be entirely numeric."
         )
 
     def clean_username(self):
@@ -236,12 +236,12 @@ class CustomUserCreationForm(UserCreationForm):
             is already in use.
 
         """
-        username = self.cleaned_data['username']
+        username = self.cleaned_data["username"]
 
         # Check if the username is already taken
         if User.objects.filter(username=username).exists():
             raise ValidationError(
-                'This username is already in use. Please choose another.'
+                "This username is already in use. Please choose another."
             )
 
         return username

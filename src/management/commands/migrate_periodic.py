@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
     """
 
-    help = 'Run database migrations periodically'
+    help = "Run database migrations periodically"
 
     def handle(self, *args, **options):
         """
@@ -38,4 +38,4 @@ class Command(BaseCommand):
             options: Keyword arguments.
 
         """
-        call_command('migrate')
+        call_command("migrate")
