@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# pylint: disable=C0415
+# pylint: disable=C0415,W0707
 """
 Django's command-line utility for administrative tasks.
 """
