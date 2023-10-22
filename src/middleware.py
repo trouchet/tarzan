@@ -53,10 +53,11 @@ class RedirectMiddleware:
             cannot be resolved.
 
         """
-        # Get the URL path from the request
-        path = request.path_info
 
         try:
+            # Get the URL path from the request
+            path = request.path_info
+
             # Attempt to resolve the URL
             resolve(path)
 

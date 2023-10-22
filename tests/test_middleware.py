@@ -21,9 +21,14 @@ the provided test cases. Actual behavior may vary depending on the real implemen
 middleware.
 """
 
+from django.http import HttpResponseRedirect
+
+from src.middleware import RedirectMiddleware
+
 REDIRECT_URL = "/api/"
 VALID_URL = REDIRECT_URL
 INVALID_URL = "/invalid/"
+
 
 def test_valid_url(middleware, request_factory):
     """
@@ -36,11 +41,11 @@ def test_valid_url(middleware, request_factory):
     Test Steps:
     1. Creates a request object for a valid URL using the RequestFactory.
     2. Passes the request through the middleware.
-    3. Asserts that the response from the middleware is equal to "42," indicating that the 
+    3. Asserts that the response from the middleware is equal to "42," indicating that the
     middleware did not perform a redirect.
 
     Note:
-        This test assumes that the middleware should return the string "42" for valid URLs. The 
+        This test assumes that the middleware should return the string "42" for valid URLs. The
         actual behavior may depend on the real implementation of the middleware.
     """
     # Test a valid URL should not be redirected
@@ -75,3 +80,20 @@ def test_middleware_in_integration(client):
 
     # Should be redirected to the default URL
     assert response.url == REDIRECT_URL
+
+
+def test_redirect_middleware_invalid_url(client):
+    # Create an invalid URL that should trigger the middleware
+    invalid_url = "/invalid-url/"
+
+    # Add the middleware to the MIDDLEWARE setting for the test
+    RedirectMiddleware(get_response=lambda request: None)
+
+    # Use the test client to send a request to the invalid URL
+    response = client.get(invalid_url)
+
+    # Ensure the response is a redirect to the specified URL
+    assert isinstance(response, HttpResponseRedirect)
+
+    # Adjust this URL to match your expected redirect URL
+    assert response.url == "/api/"

@@ -10,6 +10,7 @@ from src.middleware import RedirectMiddleware
 
 redirect_middleware = RedirectMiddleware(get_response=None)
 
+
 @pytest.fixture
 def middleware():
     """
@@ -31,7 +32,7 @@ def middleware():
 def client():
     """
     Fixture for creating an instance of the Django Client. The Client is a test client provided by
-    Django for simulating HTTP requests. It allows you to send requests to your Django application 
+    Django for simulating HTTP requests. It allows you to send requests to your Django application
     and retrieve the responses for testing purposes.
 
     Usage:
