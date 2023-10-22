@@ -55,6 +55,28 @@ from django.contrib.auth.password_validation import CommonPasswordValidator
 logger = logging.getLogger(__name__)
 
 
+def label_required(text, is_required):
+    """
+    Generate Label Text
+
+    Generates a label with an asterisk (*) if the field is required.
+
+    Args:
+        text (str): The label text.
+        is_required (bool): Indicates whether the field is required.
+
+    Returns:
+        str: The formatted label text.
+
+    """
+
+    if is_required:
+        label_text = f'{text}*'
+    else:
+        label_text = text
+    return label_text
+
+
 def validate_username(username):
     """
     Validates the given username against a regular expression pattern.
@@ -68,11 +90,11 @@ def validate_username(username):
     The username must be 150 characters or fewer and can only contain letters, digits,
     and the special characters @, ., +, -, and _.
     """
-    pattern = r"^[\w.@+-]+$"
+    pattern = r'^[\w.@+-]+$'
 
     if not re.match(pattern, username):
         raise ValidationError(
-            "Username must be 150 characters or fewer. Letters, digits, and @/./+/-/_ only."
+            'Username must be 150 characters or fewer. Letters, digits, and @/./+/-/_ only.'
         )
 
 
@@ -101,7 +123,7 @@ def validate_password_length(password):
         ValidationError: If the password is shorter than 8 characters.
     """
     if len(password) < 8:
-        raise ValidationError("Your password must contain at least 8 characters.")
+        raise ValidationError('Your password must contain at least 8 characters.')
 
 
 def validate_common_password(password):

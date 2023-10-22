@@ -8,8 +8,6 @@ import pytest
 from django.test import RequestFactory, Client
 from src.middleware import RedirectMiddleware
 
-redirect_middleware = RedirectMiddleware(get_response=None)
-
 
 @pytest.fixture
 def middleware():
@@ -25,7 +23,7 @@ def middleware():
     Example:
         middleware_instance = middleware()
     """
-    return RedirectMiddleware(lambda request: "42")
+    return RedirectMiddleware(lambda request: '42')
 
 
 @pytest.fixture
@@ -55,6 +53,6 @@ def request_factory():
         You can use this fixture in your test cases to obtain an instance of the RequestFactory.
 
     Example:
-        request_factory = rf()
+        request_factory = request_factory()
     """
     return RequestFactory()

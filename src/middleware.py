@@ -29,7 +29,7 @@ class RedirectMiddleware:
 
     """
 
-    def __init__(self, get_response, redirect_url="/api/"):
+    def __init__(self, get_response, redirect_url='/api/'):
         """
         Initialize the middleware.
 

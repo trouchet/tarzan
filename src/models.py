@@ -31,7 +31,7 @@ class Post(Model):
 
     title = CharField(max_length=200)
     content = TextField()
-    pub_date = DateTimeField("date published")
+    pub_date = DateTimeField('date published')
 
     def __str__(self):
         return str(self.title)

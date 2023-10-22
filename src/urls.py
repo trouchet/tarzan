@@ -21,18 +21,18 @@ from . import views
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
-router.register(r"users", views.UserViewSet)
-router.register(r"posts", views.PostViewSet)
+router.register(r'users', views.UserViewSet)
+router.register(r'posts', views.PostViewSet)
 
-auth_redirect = include("rest_framework.urls", namespace="rest_framework")
+auth_redirect = include('rest_framework.urls', namespace='rest_framework')
 
 urlpatterns = [
-    path("", views.index, name="index"),  # Default landing page.
-    path("", include(router.urls)),  # API routes for users and posts.
-    path("signup/", views.signup, name="signup"),  # User registration view.
-    path("profile/", views.profile, name="profile"),  # User profile view.
-    path("login/", views.CustomLoginView.as_view(), name="login"),  # Custom login view.
+    path('', views.index, name='index'),  # Default landing page.
+    path('', include(router.urls)),  # API routes for users and posts.
+    path('signup/', views.signup, name='signup'),  # User registration view.
+    path('profile/', views.profile, name='profile'),  # User profile view.
+    path('login/', views.CustomLoginView.as_view(), name='login'),  # Custom login view.
     path(
-        "logout/", views.CustomLogoutView.as_view(), name="logout"
+        'logout/', views.CustomLogoutView.as_view(), name='logout'
     ),  # Custom logout view.
 ]
