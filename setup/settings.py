@@ -15,11 +15,8 @@ from re import findall
 from pathlib import Path
 from configparser import ConfigParser
 from sys import argv
-from decouple import Config
+from decouple import config
 from drf_yasg.openapi import Info, Contact, License
-
-# Create a Config object
-config = Config('.env')
 
 # Determine the path to the pyproject.toml file one folder above the current location
 current_dir = os.path.dirname(__file__)
@@ -76,10 +73,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = config.get('SECRET_KEY')
+# SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(config.get('DEBUG', default='True'))
+DEBUG = bool(config('DEBUG'))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -187,16 +184,16 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DEFAULT_SETUP_DICT = {
     'ENGINE': 'django.db.backends.postgresql',
-    'HOST': config.get('DATABASE_HOST'),
-    'PORT': config.get('DATABASE_PORT'),
-    'NAME': config.get('DATABASE_NAME'),
-    'USER': config.get('DATABASE_USER'),
-    'PASSWORD': config.get('DATABASE_PASSWORD'),
+    'HOST': config('DATABASE_HOST'),
+    'PORT': config('DATABASE_PORT'),
+    'NAME': config('DATABASE_NAME'),
+    'USER': config('DATABASE_USER'),
+    'PASSWORD': config('DATABASE_PASSWORD'),
 }
 
 TEST_SETUP_DICT = {
     'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': 'test' + config.get('DATABASE_NAME'),
+    'NAME': 'test' + config('DATABASE_NAME'),
 }
 
 DATABASES = {
@@ -205,8 +202,8 @@ DATABASES = {
 }
 
 # Celery settings
-CELERY_BROKER_URL = config.get('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = config.get('CELERY_BROKER_URL')
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config('CELERY_BROKER_URL')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
