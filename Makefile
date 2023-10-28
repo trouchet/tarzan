@@ -2,6 +2,7 @@
 
 # Define common variables
 DJANGO_MANAGE = python manage.py
+CELERY_COMMAND = celery -A src
 DOCKER_COMPOSE = docker-compose
 DOCKER = docker
 PYTHON := python
@@ -37,7 +38,7 @@ endef
 export PRINT_HELP_PYSCRIPT
 
 # Additional rules can be added as needed.
-.PHONY: prepare sudo migrate run up down ps purge whos
+.PHONY: prepare sudo migrate run up down ps purge whos which
 
 help: ## Add a rule to list commands
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
@@ -50,7 +51,7 @@ clean-pyc: # Add a rule to remove pyc files
 	find . -name '*.pyc' -o -name '*.pyo' -o -name '*~' -exec rm -rf {} +
 
 clean-test: # remove test and coverage artifacts
-	rm -fr .tox/ .coverage coverage.* htmlcov/ .pytest_cache
+	rm -fr .tox/ .testmondata* .coverage coverage.* htmlcov/ .pytest_cache
 
 clean-cache: # remove test and coverage artifacts
 	find . -name '*cache*' -exec rm -rf {} +
@@ -85,22 +86,25 @@ lint: ## Add a rule to clean up any temporary files
 	pre-commit run --all-files
 	find . -name "*.py" -exec autopep8 --in-place --aggressive --aggressive {} \;
 
-lint-check: ## Add a rule to check for code lint
-	pylint $(find . -type f -name '*.py')
-
 test: ## Add a rule to test the application
-	coverage run -m pytest --nomigrations --ignore=src/migrations
-	poetry run coverage run --rcfile=.coveragerc -m pytest
-	
+	poetry run coverage run --rcfile=.coveragerc -m pytest --ignore=src/migrations
+
+watch: env ## run tests on watchdog mode
+	ptw . -- pytest --ignore=src/migrations
+
+cov: clean test ## Add a rule to generate coverage report
+	coverage report --omit="src/migrations/*" --show-missing
+
 swagger: ## Add a rule to generate swagger in json format
 	$(DJANGO_MANAGE) generate_swagger
 
 schema: ## Add a rule to generate swagger in yaml format
 	$(DJANGO_MANAGE) generateschema
 
-report: clean test ## Add a rule to generate coverage report
-	coverage report
-	coverage html
+report: coverage ## Add a rule to generate coverage report
+
+html-report: clean test report ## Add a rule to generate coverage report
+	coverage html --omit="src/migrations/*" --skip-covered
 	$(BROWSER) htmlcov/index.html
 
 migrate: # Add a rule to run initial migrations and create a superuser
@@ -108,6 +112,12 @@ migrate: # Add a rule to run initial migrations and create a superuser
 
 collect: # Add a rule to collect static files for production environment
 	$(DJANGO_MANAGE) collectstatic
+
+worker: # Add a rule to run celery worker
+	$(CELERY_COMMAND) worker -l info 
+
+flower: # Add a rule to run flower
+	$(CELERY_COMMAND) flower
 
 ps: ## Add a rule to list containers
 	docker ps -a
