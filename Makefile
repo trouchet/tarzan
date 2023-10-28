@@ -135,7 +135,7 @@ run: ## Add a rule to run the development server.
 db-check: ## Add a rule to check database connection
 	$(DJANGO_MANAGE) check
 
-deploy: build up db-check ## Add a rule to deploy the server.
+deploy: build up ## Add a rule to deploy the server.
 
 sudo: ## Add a rule to add Django super user
 	$(DJANGO_MANAGE) createsuperuser
