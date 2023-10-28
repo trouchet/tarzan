@@ -43,8 +43,10 @@ author_info = [
     {'name': name.strip(), 'email': email.strip()} for name, email in author_matches
 ]
 
-# Replace with the desired redirect URL
-LOGIN_URL = '/api/profile/'
+# Login/logout URLs
+LOGIN_URL = '/api/login/'
+LOGIN_REDIRECT_URL='/api/profile/'
+LOGOUT_REDIRECT_URL='/api/login/'
 
 # Use the database model user for authentication
 AUTH_USER_MODEL = 'auth.user'
@@ -95,7 +97,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'src.middleware.RedirectMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -195,7 +196,6 @@ TEST_SETUP_DICT = {
     'ENGINE': 'django.db.backends.sqlite3',
     'NAME': 'test' + config('DATABASE_NAME'),
 }
-
 
 
 DATABASES = {

@@ -30,6 +30,7 @@ from .forms import CustomUserCreationForm
 from .serializers import PostSerializer, CustomUserSerializer
 from .tasks import my_task
 
+
 def index(request):
     """
     index View
@@ -45,10 +46,12 @@ def index(request):
     """
     return render(request, 'src/index.html')
 
+
 def my_view(request):
     # Trigger the background task
     result = my_task.delay(1, 2)
     return HttpResponse(f'Task ID: {result.id}')
+
 
 # ViewSets define the view behavior.
 

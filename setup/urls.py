@@ -30,5 +30,4 @@ urlpatterns = [
     path('api/', include('src.urls')),
     path('swagger/', swagger_with_ui, name='schema-swagger-ui'),
     path('favicon.ico', favicon_redirect),
-    re_path(r'^.*$', wild_redirect),
 ]
