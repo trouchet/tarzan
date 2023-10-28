@@ -21,14 +21,9 @@ the provided test cases. Actual behavior may vary depending on the real implemen
 middleware.
 """
 
-from django.http import HttpResponseRedirect
-
-from src.middleware import RedirectMiddleware
-
 REDIRECT_URL = '/api/'
 VALID_URL = REDIRECT_URL
 INVALID_URL = '/invalid/'
-
 
 def test_valid_url(middleware, request_factory):
     """
