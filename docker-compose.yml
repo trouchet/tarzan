@@ -21,10 +21,20 @@ services:
     environment:
       - HOST_PORT=${HOST_PORT}
     command: ["./django-deploy.sh", "${HOST_PORT}"]
+  redis:
+    image: redis:latest
+    container_name: tarzan-redis
+    env_file:
+      - .env
+    ports:
+      - "${REDIS_PORT}:${REDIS_PORT}"
   celery:
     build:
       context: .
     container_name: tarzan-celery
+    depends_on:
+      - redis
+      - web
     env_file:
       - .env
     command: celery -A src worker -l info
@@ -32,6 +42,8 @@ services:
     build:
       context: .
     container_name: tarzan-flower
+    depends_on:
+      - celery
     env_file:
       - .env
     command: celery -A src flower --broker=${CELERY_BROKER_URL}
