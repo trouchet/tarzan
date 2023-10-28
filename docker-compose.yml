@@ -44,9 +44,8 @@ services:
     build:
       context: .
     container_name: tarzan-flower
-    depends_on: 
+    depends_on:
       - celery
     env_file:
       - .env
     command: celery -A src --broker=${CELERY_BROKER_URL} flower
-

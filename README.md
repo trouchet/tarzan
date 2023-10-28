@@ -16,7 +16,7 @@ Run the commands below on `tarzan` root path:
 <summary>
 Click here to unfold
 </summary>
-  
+
 ### Prepare
 
 - **What**: prepare environment for `poetry` usage:

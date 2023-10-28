@@ -45,8 +45,8 @@ author_info = [
 
 # Login/logout URLs
 LOGIN_URL = '/api/login/'
-LOGIN_REDIRECT_URL='/api/profile/'
-LOGOUT_REDIRECT_URL='/api/login/'
+LOGIN_REDIRECT_URL = '/api/profile/'
+LOGOUT_REDIRECT_URL = '/api/login/'
 
 # Use the database model user for authentication
 AUTH_USER_MODEL = 'auth.user'
