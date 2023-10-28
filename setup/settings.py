@@ -79,7 +79,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = config.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(config.get('DEBUG'))
+DEBUG = bool(config.get('DEBUG', default='True'))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
