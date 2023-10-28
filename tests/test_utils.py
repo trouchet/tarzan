@@ -41,6 +41,16 @@ from src.utils import (
 
 
 def test_label_required():
+    """
+    Test the label_required function.
+
+    This function tests the label_required function, which adds an asterisk
+    (*) to a label if is_required is True.
+
+    Asserts:
+    - When is_required is True, the function appends '*' to the label.
+    - When is_required is False, the function returns the label as is.
+    """
     # Test when is_required is True
     result = label_required('Username', is_required=True)
     expected_result = 'Username*'

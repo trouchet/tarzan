@@ -36,7 +36,7 @@ def test_signup_view_get(request_factory):
 
     Asserts:
     - The response status code is 200 (OK).
-    """
+    """ 
     
     # Create a GET request to the signup view
     request = request_factory.get('/signup/')
