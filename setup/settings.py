@@ -18,6 +18,9 @@ from sys import argv
 from decouple import config
 from drf_yasg.openapi import Info, Contact, License
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 # Determine the path to the pyproject.toml file one folder above the current location
 current_dir = os.path.dirname(__file__)
 relative_py_tol_path = os.path.join(current_dir, '..', 'pyproject.toml')
@@ -94,6 +97,55 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+MIDDLEWARE = [
+    'src.middleware.RedirectMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+# Enable the Debug Toolbar middleware for development
+if DEBUG:
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+
+# Allow access to the Debug Toolbar only from localhost
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+# Set the path to your project's root directory
+DEBUG_TOOLBAR_PANELS = [
+    'debug_toolbar.panels.versions.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings.SettingsDebugPanel',
+    'debug_toolbar.panels.headers.HeadersDebugPanel',
+    'debug_toolbar.panels.request.RequestDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.staticfiles.StaticFilesDebugPanel',
+    'debug_toolbar.panels.templates.TemplatesDebugPanel',
+    'debug_toolbar.panels.cache.CacheDebugPanel',
+    'debug_toolbar.panels.signals.SignalsDebugPanel',
+    'debug_toolbar.panels.logging.LoggingPanel',
+    'debug_toolbar.panels.redirects.RedirectsDebugPanel',
+]
+
+sentry_sdk.init(
+    dsn=config('SENTRY_DSN'),
+    integrations=[DjangoIntegration()],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    traces_sample_rate=1.0,
+    # Set profiles_sample_rate to 1.0 to profile 100%
+    # of sampled transactions.
+    # We recommend adjusting this value in production.
+    profiles_sample_rate=1.0,
+)
+
+
 # Static files (CSS, JavaScript, images)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -122,17 +174,6 @@ SWAGGER_SETTINGS = {
     'JSON_EDITOR': True,
     'DEFAULT_INFO': api_info,
 }
-
-MIDDLEWARE = [
-    'src.middleware.RedirectMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
 
 ROOT_URLCONF = 'setup.urls'
 
@@ -175,6 +216,14 @@ DATABASES = {
     'default': DEFAULT_SETUP_DICT,
     'test': TEST_SETUP_DICT,
 }
+
+# Celery settings
+CELERY_BROKER_URL = config('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config('CELERY_BROKER_URL')
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
 
 # Use an in-memory database for tests to avoid modifying your development or production database
 if 'test' in argv:
