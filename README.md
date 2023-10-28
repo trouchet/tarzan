@@ -12,6 +12,11 @@ A Django app with routes and logging.
 
 Run the commands below on `tarzan` root path:
 
+<details>
+<summary>
+Click here to unfold
+</summary>
+  
 ### Prepare
 
 - **What**: prepare environment for `poetry` usage:
@@ -58,3 +63,5 @@ Run the commands below on `tarzan` root path:
 
 - **What**: perform actions `build`, `up`, `migrate`, `sudo` and `run`:
 - **How**: `make start`
+
+<\details>
