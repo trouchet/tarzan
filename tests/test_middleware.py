@@ -83,6 +83,10 @@ def test_middleware_in_integration(client):
 
 
 def test_redirect_middleware_invalid_url(client):
+    """
+    Test redirect middleware with an invalid URL.
+    """
+
     # Create an invalid URL that should trigger the middleware
     invalid_url = '/invalid-url/'
 
