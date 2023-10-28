@@ -23,12 +23,12 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
-
+from django.http import HttpResponse
 
 from .models import Post
 from .forms import CustomUserCreationForm
 from .serializers import PostSerializer, CustomUserSerializer
-
+from .tasks import my_task
 
 def index(request):
     """
@@ -45,6 +45,10 @@ def index(request):
     """
     return render(request, 'src/index.html')
 
+def my_view(request):
+    # Trigger the background task
+    result = my_task.delay(1, 2)
+    return HttpResponse(f'Task ID: {result.id}')
 
 # ViewSets define the view behavior.
 
