@@ -15,11 +15,14 @@ from re import findall
 from pathlib import Path
 from configparser import ConfigParser
 from sys import argv
-from decouple import config
+from decouple import Config
 from drf_yasg.openapi import Info, Contact, License
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
+# Create a Config object
+config = Config()
+
+# Load the configuration from the .env file
+config.read('.env')
 
 # Determine the path to the pyproject.toml file one folder above the current location
 current_dir = os.path.dirname(__file__)
@@ -187,16 +190,16 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 
 DEFAULT_SETUP_DICT = {
     'ENGINE': 'django.db.backends.postgresql',
-    'HOST': config('DATABASE_HOST'),
-    'PORT': config('DATABASE_PORT'),
-    'NAME': config('DATABASE_NAME'),
-    'USER': config('DATABASE_USER'),
-    'PASSWORD': config('DATABASE_PASSWORD'),
+    'HOST': config.get('DATABASE_HOST'),
+    'PORT': config.get('DATABASE_PORT'),
+    'NAME': config.get('DATABASE_NAME'),
+    'USER': config.get('DATABASE_USER'),
+    'PASSWORD': config.get('DATABASE_PASSWORD'),
 }
 
 TEST_SETUP_DICT = {
     'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': 'test' + config('DATABASE_NAME'),
+    'NAME': 'test' + config.get('DATABASE_NAME'),
 }
 
 DATABASES = {
@@ -205,8 +208,8 @@ DATABASES = {
 }
 
 # Celery settings
-CELERY_BROKER_URL = config('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = config('CELERY_BROKER_URL')
+CELERY_BROKER_URL = config.get('CELERY_BROKER_URL')
+CELERY_RESULT_BACKEND = config.get('CELERY_BROKER_URL')
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
