@@ -19,10 +19,7 @@ from decouple import Config
 from drf_yasg.openapi import Info, Contact, License
 
 # Create a Config object
-config = Config()
-
-# Load the configuration from the .env file
-config.read('.env')
+config = Config('.env')
 
 # Determine the path to the pyproject.toml file one folder above the current location
 current_dir = os.path.dirname(__file__)
