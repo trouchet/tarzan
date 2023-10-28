@@ -12,21 +12,19 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 # Create and set the working directory
 WORKDIR /app
 
-RUN apt-get install redis-server
-
 # Install system dependencies (if needed)
 RUN pip install poetry
 
 # Copy only the project files needed initially
 COPY . /app/
-COPY scripts/django-utils.sh /app/
+COPY scripts/django-deploy.sh /app/
 
 # Install project dependencies using Poetry within a virtual environment
 RUN poetry config virtualenvs.create false && \
     poetry install --only main --no-interaction --no-ansi
 
 # Set executable permissions for the script
-RUN chmod +x /app/django-utils.sh
+RUN chmod +x /app/django-deploy.sh
 
 # Start the Django development server within the virtual environment
 # Run database migrations and collect static files before starting the Django app

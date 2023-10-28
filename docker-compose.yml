@@ -3,7 +3,7 @@ version: '3'
 services:
   db:
     image: postgres:latest
-    container_name: db
+    container_name: tarzan-db
     env_file:
       - .env
     ports:
@@ -11,7 +11,7 @@ services:
   web:
     build:
       context: .
-    container_name: tarzan-box
+    container_name: tarzan-web
     env_file:
       - .env
     ports:
@@ -20,4 +20,4 @@ services:
       - db
     environment:
       - HOST_PORT=${HOST_PORT}
-    command: ["./django-utils.sh", "${HOST_PORT}"]
+    command: ["./django-deploy.sh", "${HOST_PORT}"]
