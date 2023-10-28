@@ -37,6 +37,10 @@ endef
 
 export PRINT_HELP_PYSCRIPT
 
+# Include the .env file and load all variables into the Makefile
+include .env
+export $(shell sed 's/=.*//' .env)
+
 # Additional rules can be added as needed.
 .PHONY: prepare sudo migrate run up down ps purge whos which
 
@@ -113,12 +117,6 @@ migrate: # Add a rule to run initial migrations and create a superuser
 collect: # Add a rule to collect static files for production environment
 	$(DJANGO_MANAGE) collectstatic
 
-worker: # Add a rule to run celery worker
-	$(CELERY_COMMAND) worker -l info 
-
-flower: # Add a rule to run flower
-	$(CELERY_COMMAND) flower
-
 ps: ## Add a rule to list containers
 	docker ps -a
 
@@ -132,7 +130,7 @@ down: ## Add a rule to docker down containers
 	$(DOCKER_COMPOSE) down
 
 run: ## Add a rule to run the development server.
-	$(DJANGO_MANAGE) runserver 0.0.0.0:8000
+    $(DJANGO_MANAGE) runserver 0.0.0.0:$(HOST_PORT)
 
 db-check: ## Add a rule to check database connection
 	$(DJANGO_MANAGE) check
