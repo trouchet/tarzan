@@ -27,8 +27,6 @@ services:
     container_name: tarzan-celery
     env_file:
       - .env
-    depends_on:
-      - db
     command: celery -A src worker -l info
   flower:
     build:
@@ -36,6 +34,5 @@ services:
     container_name: tarzan-flower
     env_file:
       - .env
-    depends_on:
-      - db
-    command: flower -A src --port=${FLOWER_PORT}
+    command: celery -A src flower --broker=${CELERY_BROKER_URL}
+
