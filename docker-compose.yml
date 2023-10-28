@@ -39,7 +39,7 @@ services:
       - web
     env_file:
       - .env
-    command: celery -A src worker -l info
+    command: celery -A src.celery worker -l info
   flower:
     build:
       context: .
