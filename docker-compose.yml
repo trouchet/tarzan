@@ -39,4 +39,3 @@ services:
     depends_on:
       - db
     command: flower -A src --port=${FLOWER_PORT}
-
