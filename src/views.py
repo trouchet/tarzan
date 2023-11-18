@@ -52,6 +52,7 @@ def my_view(request):
     result = my_task.delay(1, 2)
     return HttpResponse(f'Task ID: {result.id}')
 
+
 # ViewSets define the view behavior.
 
 

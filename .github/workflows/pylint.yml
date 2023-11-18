@@ -41,4 +41,3 @@ jobs:
         poetry run pylint --fail-under=95 $(git ls-files '*.py')
         # Allow the workflow to continue even if pylint fails to meet the threshold
       continue-on-error: true
-

@@ -25,6 +25,7 @@ REDIRECT_URL = '/api/'
 VALID_URL = REDIRECT_URL
 INVALID_URL = '/invalid/'
 
+
 def test_valid_url(middleware, request_factory):
     """
     Test case to verify that a valid URL is not redirected when processed by the RedirectMiddleware.
@@ -47,6 +48,3 @@ def test_valid_url(middleware, request_factory):
     request = request_factory.get(VALID_URL)
     response = middleware(request)
     assert response == '42'
-
-
-
