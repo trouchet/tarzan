@@ -61,7 +61,7 @@ clean-cache: # remove test and coverage artifacts
 	find . -name '*cache*' -exec rm -rf {} +
 
 clean: clean-logs clean-pyc clean-test clean-cache ## Add a rule to remove unnecessary assets
-	$(DOCKER) system prune --volumes -f
+	docker system prune --volumes -f
 
 env: ## Add a rule to activate environment
 	poetry shell
@@ -96,7 +96,7 @@ test: ## Add a rule to test the application
 watch: env ## run tests on watchdog mode
 	ptw . -- pytest --ignore=src/migrations
 
-cov: clean test ## Add a rule to generate coverage report
+report: clean test ## Add a rule to generate coverage report
 	coverage report --omit="src/migrations/*" --show-missing
 
 swagger: ## Add a rule to generate swagger in json format
@@ -104,8 +104,6 @@ swagger: ## Add a rule to generate swagger in json format
 
 schema: ## Add a rule to generate swagger in yaml format
 	$(DJANGO_MANAGE) generateschema
-
-report: coverage ## Add a rule to generate coverage report
 
 html-report: clean test report ## Add a rule to generate coverage report
 	coverage html --omit="src/migrations/*" --skip-covered
@@ -120,9 +118,6 @@ collect: # Add a rule to collect static files for production environment
 ps: ## Add a rule to list containers
 	docker ps -a
 
-build: ## Add a rule to build the docker containers
-	$(DOCKER_COMPOSE) build
-
 up: ## Add a rule to docker up containers
 	$(DOCKER_COMPOSE) up
 
@@ -136,6 +131,9 @@ db-check: ## Add a rule to check database connection
 	$(DJANGO_MANAGE) check
 
 deploy: build up ## Add a rule to deploy the server.
+
+expose: ## Add a rule to expose the server.
+	ngrok http $(HOST_PORT)
 
 sudo: ## Add a rule to add Django super user
 	$(DJANGO_MANAGE) createsuperuser

@@ -28,15 +28,15 @@ pyproject_config = ConfigParser()
 pyproject_config.read(pyproject_path)
 
 # Access values from the pyproject.toml file
-project_name = pyproject_config['tool.poetry']['name']
-project_version = pyproject_config['tool.poetry']['version']
-project_description = pyproject_config['tool.poetry']['description']
-project_authors = pyproject_config['tool.poetry']['authors']
-project_license = pyproject_config['tool.poetry']['license']
+PROJECT_NAME = pyproject_config['tool.poetry']['name']
+PROJECT_VERSION = pyproject_config['tool.poetry']['version']
+PROJECT_DESCRIPTION = pyproject_config['tool.poetry']['description']
+PROJECT_AUTHORS = pyproject_config['tool.poetry']['authors']
+PROJECT_LICENSE = pyproject_config['tool.poetry']['license']
 
 # Extract authors' names and email addresses using regular expressions
 AUTHOR_PATTERN = r'(.*?) <(.*?)>'
-author_matches = findall(AUTHOR_PATTERN, project_authors)
+author_matches = findall(AUTHOR_PATTERN, PROJECT_AUTHORS)
 
 # Create a list of dictionaries with author names and emails
 author_info = [
@@ -80,7 +80,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -141,12 +141,12 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 first_author = author_info[0]
 
 api_info = Info(
-    title=project_name,
-    default_version=project_version,
-    description=project_description,
+    title=PROJECT_NAME,
+    default_version=PROJECT_VERSION,
+    description=PROJECT_DESCRIPTION,
     terms_of_service='',
     contact=Contact(name=first_author['name'], email=first_author['email']),
-    license=License(name=project_license),
+    license=License(name=PROJECT_LICENSE),
     authors=author_info,
 )
 

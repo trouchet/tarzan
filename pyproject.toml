@@ -67,6 +67,7 @@ celery = "^5.3.4"
 redis = "^5.0.1"
 flower = "^2.0.1"
 django-debug-toolbar = "^4.2.0"
+gunicorn = "^21.2.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -21,9 +21,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView as BaseLogoutView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.http import HttpResponse
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import ModelViewSet
-from django.http import HttpResponse
 
 from .models import Post
 from .forms import CustomUserCreationForm
@@ -55,8 +55,7 @@ def my_view(request):
 
 # ViewSets define the view behavior.
 
-
-# pylint: disable=R0901
+# pylint: disable=too-many-ancestors
 class PostViewSet(ModelViewSet):
     """
     PostViewSet Class
@@ -92,8 +91,7 @@ class UserViewSet(ModelViewSet):
     serializer_class = CustomUserSerializer
     permission_classes = [IsAuthenticated]
 
-
-# pylint: disable=R0901
+# pylint: disable=no-member
 class CustomLoginView(LoginView):
     """
     CustomLoginView Class

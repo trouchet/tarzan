@@ -1,8 +1,10 @@
-To support multiple languages and locales for a global audience in a Django application, you can follow these steps:
+To support multiple languages and locales for a global audience in a Django 
+application, you can follow these steps:
 
 **Configure Django Settings**:
 
-Open your Django project's settings file (settings.py) and make the following configurations:
+Open your Django project's settings file (settings.py) and make the following 
+configurations:
 
 Set USE_I18N to True:
 
@@ -24,7 +26,8 @@ LANGUAGE_CODE = 'en-us'
 
 **Specify Supported Languages**:
 
-Define the languages and locales you want to support using the LANGUAGES setting. For example:
+Define the languages and locales you want to support using the LANGUAGES 
+setting. For example:
 
 ```python
 from django.utils.translation import gettext_lazy as _
@@ -148,11 +151,16 @@ Run the following command to generate translation files for your project:
 python manage.py makemessages -l [language_code]
 ```
 
-Replace [language_code] with the language code for the language you want to add translations for (e.g., es for Spanish).
+Replace [language_code] with the language code for the language you want to add 
+translations for (e.g., es for Spanish).
 
-In the project's root directory, navigate to the locale directory inside the app where you ran makemessages. Inside the locale directory, you'll find subdirectories for each language you specified in LANGUAGES.
+In the project's root directory, navigate to the locale directory inside the app 
+where you ran makemessages. Inside the locale directory, you'll find subdirectories 
+for each language you specified in LANGUAGES.
 
-In each language subdirectory, you'll find a .po file (e.g., django.po). Open this file in a text editor and add translations for each string that needs to be translated.
+In each language subdirectory, you'll find a .po file (e.g., django.po). Open 
+this file in a text editor and add translations for each string that needs to 
+be translated.
 
 After adding translations, compile the .po files into .mo files by running:
 
@@ -162,7 +170,8 @@ python manage.py compilemessages
 
 **Internationalize Templates and Python Code**:
 
-In your templates, wrap text that needs translation with the {% trans %} template tag. For example:
+In your templates, wrap text that needs translation with the {% trans %} 
+template tag. For example:
 
 ```html
 <h1>{% trans "Welcome" %}</h1>
@@ -178,12 +187,20 @@ message = _("Hello, World!")
 
 **Enable Language Switching**:
 
-To allow users to switch between languages, create a language switcher in your templates. You can use the set_language view provided by Django to change the language dynamically.
+To allow users to switch between languages, create a language switcher in your 
+templates. You can use the set_language view provided by Django to change the 
+language dynamically.
 
-Create a form or a dropdown menu in your templates to allow users to select their preferred language and submit the form to the set_language view.
+Create a form or a dropdown menu in your templates to allow users to select 
+their preferred language and submit the form to the set_language view.
 
 Handle Date, Time, and Number Formats:
 
-Django's localization framework also handles date, time, and number formats. To display these formats correctly for each locale, you can use Django's built-in template filters such as date, time, and number_format.
+Django's localization framework also handles date, time, and number formats. 
+To display these formats correctly for each locale, you can use Django's built-
+in template filters such as date, time, and number_format.
 
-By following these steps, your Django application should now support multiple languages and locales, allowing you to cater to a global audience with localized content. Make sure to create translation files for all the languages you want to support and regularly update translations as your application evolves.
+By following these steps, your Django application should now support multiple 
+languages and locales, allowing you to cater to a global audience with localized 
+content. Make sure to create translation files for all the languages you want to
+ support and regularly update translations as your application evolves.

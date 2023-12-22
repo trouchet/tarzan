@@ -1,3 +1,13 @@
+"""
+Module Description
+
+This module contains a Celery shared task for background processing.
+
+It defines a Celery shared task called `my_task` that can be used for performing
+background processing. The task takes two arguments, arg1 and arg2, and returns
+a tuple containing these arguments after performing some background task logic.
+"""
+
 from celery import shared_task
 
 

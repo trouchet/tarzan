@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "src",
+      "cwd": "/srv/src",
+      "args": "runserver",
+      "script": "manage.py",
+      "exec_mode": "fork",
+      "instances": "1",
+        "wait_ready": true,
+        "autorestart": false,
+        "max_restarts": 5,
+      "exec_interpreter": "python"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-# pylint: disable=C0415,W0707
+# pylint: disable=import-outside-toplevel
+# pylint: disable=raise-missing-from
 """
 Django's command-line utility for administrative tasks.
 """

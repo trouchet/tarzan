@@ -4,8 +4,9 @@ Module Docstring:
 This module provides fixtures for setting up test data.
 """
 
-import pytest
 from django.test import RequestFactory, Client
+import pytest
+
 from src.middleware import RedirectMiddleware
 
 

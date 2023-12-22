@@ -6,7 +6,7 @@ body {
 header {
     background-color: #3e6b89;
    /* Calming header background color */
-    color: #ffffff;
+    color: #fff;
    /* White text on header */
     padding: 10px;
 }
@@ -19,7 +19,7 @@ nav ul li {
     margin-right: 20px;
 }
 nav ul li a {
-    color: #ffffff;
+    color: #fff;
    /* White text for navigation links */
     text-decoration: none;
 }
@@ -32,7 +32,7 @@ nav ul li a {
 .button {
     background-color: #007bff;
    /* Green background color */
-    color: #ffffff;
+    color: #fff;
    /* White text color */
     padding: 10px 20px;
    /* Padding for buttons (adjust as needed) */
@@ -105,6 +105,35 @@ nav ul li a {
     text-align: center;
    /* Center text and form elements */
 }
+/* Style for form group */
+.form-group {
+    margin-bottom: 20px;
+   /* Adjust the margin as needed */
+}
+/* Style for labels */
+.form-group label {
+    display: block;
+   /* Make labels take full width */
+    font-weight: bold;
+   /* Make labels bold, adjust as needed */
+    margin-bottom: 5px;
+   /* Add spacing between labels and inputs */
+}
+/* Style for inputs */
+.form-group input[type="text"], .form-group input[type="password"] {
+    width: 100%;
+   /* Make text and password inputs span the full width */
+}
+.form-group input[type="email"], .form-group textarea {
+    width: 100%;
+   /* Make inputs take full width */
+    padding: 10px;
+   /* Add padding for spacing */
+    border: 1px solid #ccc;
+   /* Add a border to inputs */
+    border-radius: 3px;
+   /* Add rounded corners to inputs */
+}
 /* Style for the login form within the login-form-container */
 .login-form-container .login-form {
     text-align: left;
@@ -150,35 +179,6 @@ nav ul li a {
     cursor: pointer;
    /* Add pointer cursor on hover */
 }
-/* Style for form group */
-.form-group {
-    margin-bottom: 20px;
-   /* Adjust the margin as needed */
-}
-/* Style for labels */
-.form-group label {
-    display: block;
-   /* Make labels take full width */
-    font-weight: bold;
-   /* Make labels bold, adjust as needed */
-    margin-bottom: 5px;
-   /* Add spacing between labels and inputs */
-}
-/* Style for inputs */
-.form-group input[type="text"], .form-group input[type="password"] {
-    width: 100%;
-   /* Make text and password inputs span the full width */
-}
-.form-group input[type="email"], .form-group textarea {
-    width: 100%;
-   /* Make inputs take full width */
-    padding: 10px;
-   /* Add padding for spacing */
-    border: 1px solid #ccc;
-   /* Add a border to inputs */
-    border-radius: 3px;
-   /* Add rounded corners to inputs */
-}
 /* Style for required field indicator (asterisk) */
 .required-field {
     color: red;
@@ -192,7 +192,7 @@ main {
 footer {
     background-color: #3e6b89;
    /* Calming footer background color */
-    color: #ffffff;
+    color: #fff;
    /* White text on footer */
     padding: 10px;
     text-align: center;

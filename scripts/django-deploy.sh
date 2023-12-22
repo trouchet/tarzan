@@ -23,4 +23,4 @@ poetry run python manage.py createcachetable
 poetry run python manage.py collectstatic --noinput
 
 # Start the Django development server
-exec poetry run python manage.py runserver 0.0.0.0:"$port"
+exec poetry run gunicorn setup.wsgi:application -b 0.0.0.0:"$port"

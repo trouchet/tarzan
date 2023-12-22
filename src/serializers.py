@@ -11,8 +11,9 @@ Classes:
 """
 # pylint: disable=R0903
 
-from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer
 from django.contrib.auth.models import User
+from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer
+
 from .models import Post
 
 

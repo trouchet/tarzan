@@ -6,8 +6,9 @@ This module defines Factory class for necessary abstract concepts on the applica
 
 """
 
-import factory
 from django.utils import timezone
+
+import factory
 from src.models import Post
 
 

@@ -1,8 +1,12 @@
-Configuring logging and including a debug toolbar in Django for development and production environments are essential steps for efficient debugging and monitoring. Here's how you can perform these actions:
+Configuring logging and including a debug toolbar in Django for development 
+and production environments are essential steps for efficient debugging and 
+monitoring. Here's how you can perform these actions:
 
 **Configure Logging for Development and Production**:
 
-Django provides a flexible logging system that allows you to configure how logs are handled in different environments. You can set up logging in your project's settings file (settings.py).
+Django provides a flexible logging system that allows you to configure how 
+logs are handled in different environments. You can set up logging in your 
+project's settings file (settings.py).
 
 - Basic Configuration:
 
@@ -10,7 +14,8 @@ Django provides a flexible logging system that allows you to configure how logs 
 
 import os
 
-LOGGING_DIR = os.path.join(BASE_DIR, 'logs')  # Create a 'logs' directory in your project root.
+# Create a 'logs' directory in your project root.
+LOGGING_DIR = os.path.join(BASE_DIR, 'logs')  
 
 LOGGING = {
     'version': 1,
@@ -29,7 +34,7 @@ LOGGING = {
         'file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': os.path.join(LOGGING_DIR, 'debug.log'),  # Log file path
+            'filename': os.path.join(LOGGING_DIR, 'debug.log'),  # Log file
             'formatter': 'verbose',
         },
     },
@@ -42,7 +47,8 @@ LOGGING = {
 
 - Usage:
 
-Now, you can use the Python logging module to log messages at different levels (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL) throughout your Django application.
+Now, you can use the Python logging module to log messages at different levels 
+(e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL) throughout your Django application.
 
 Example of logging a message:
 
@@ -61,7 +67,9 @@ def my_view(request):
 
 **Include a Debug Toolbar for Development**:
 
-The Django Debug Toolbar is a powerful tool for debugging and optimizing Django applications during development. It provides insights into SQL queries, cache usage, template rendering times, and more.
+The Django Debug Toolbar is a powerful tool for debugging and optimizing Django
+ applications during development. It provides insights into SQL queries, cache 
+ usage, template rendering times, and more.
 
 - Install the Debug Toolbar:
 
@@ -73,7 +81,8 @@ pip install django-debug-toolbar
 
 - Configure the Debug Toolbar:
 
-In your settings.py file, add 'debug_toolbar' to your INSTALLED_APPS and configure the middleware:
+In your settings.py file, add 'debug_toolbar' to your INSTALLED_APPS and 
+configure the middleware:
 
 ```python
 # settings.py
@@ -124,6 +133,11 @@ In your base template (e.g., base.html), include the {% debug_toolbar %} templat
 
 - Run the Development Server:
 
-When you run the development server (python manage.py runserver), you'll see the debug toolbar at the top of your web pages. Clicking on it provides detailed information about the request, SQL queries, and more.
+When you run the development server (python manage.py runserver), you'll see 
+the debug toolbar at the top of your web pages. Clicking on it provides 
+detailed information about the request, SQL queries, and more.
 
-Make sure to use the debug toolbar only in development environments. In production, you should disable or remove it to avoid potential security risks and performance issues. You can do this by ensuring that the DEBUG setting in your settings.py is False in the production environment.
+Make sure to use the debug toolbar only in development environments. In production, 
+you should disable or remove it to avoid potential security risks and performance 
+issues. You can do this by ensuring that the DEBUG setting in your settings.py 
+is False in the production environment.
