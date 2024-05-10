@@ -63,4 +63,4 @@ Click here to unfold
 - **What**: perform actions `build`, `up`, `migrate`, `sudo` and `run`:
 - **How**: `make start`
 
-<\details>
+</details>
